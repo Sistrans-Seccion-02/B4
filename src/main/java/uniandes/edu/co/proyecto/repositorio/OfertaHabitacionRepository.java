@@ -1,4 +1,5 @@
 package uniandes.edu.co.proyecto.repositorio;
+import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,7 +33,7 @@ public interface OfertaHabitacionRepository extends JpaRepository<OfertaHabitaci
     @Transactional
     @Query(value = "INSERT INTO ofertahabitacion (capacidad, fechaInicio, fechaFin, costo, tipoHabitacion, idHotel) VALUES (:capacidad, :fechaInicio, :fechaFin, :costo, :tipoHabitacion, :idHotel)", nativeQuery = true)
     void insertarOfertaHabitacion(@Param("capacidad") Integer capacidad, 
-    @Param("fechaInicio") String fechaInicio, @Param("fechaFin") String fechaFin, 
+    @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, 
     @Param("costo") float costo, @Param("tipoHabitacion") String tipoHabitacion, @Param("idHotel") Integer idHotel);
 
     //actualizar oferta de habitacion
@@ -40,7 +41,7 @@ public interface OfertaHabitacionRepository extends JpaRepository<OfertaHabitaci
     @Transactional
     @Query(value = "UPDATE ofertahabitacion SET capacidad = :capacidad, fechaInicio = :fechaInicio, fechaFin = :fechaFin, costo = :costo, tipoHabitacion = :tipoHabitacion, idHotel = :idHotel WHERE id = :id", nativeQuery = true)
     void actualizarOfertaHabitacion(@Param("id") Integer id, @Param("capacidad") Integer capacidad, 
-    @Param("fechaInicio") String fechaInicio, @Param("fechaFin") String fechaFin, 
+    @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, 
     @Param("costo") float costo, @Param("tipoHabitacion") String tipoHabitacion, @Param("idHotel") Integer idHotel);
 
     //eliminar oferta de habitacion

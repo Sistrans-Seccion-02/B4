@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.repositorio;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,7 +32,7 @@ public interface ReservaHabitacionRepository extends JpaRepository<ReservaHabita
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO reservahabitacion (fechaInicio, fechaFin, pago, idHabitacion, idCliente) VALUES (:fechaInicio, :fechaFin, :pago, :idHabitacion, :idCliente)", nativeQuery = true)
-    void insertarReservaHabitacion(@Param("fechaInicio") String fechaInicio, @Param("fechaFin") String fechaFin,
+    void insertarReservaHabitacion(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin,
             @Param("pago") float pago, @Param("idHabitacion") Integer idHabitacion,
             @Param("idCliente") Integer idCliente);
 
@@ -39,8 +40,8 @@ public interface ReservaHabitacionRepository extends JpaRepository<ReservaHabita
     @Modifying
     @Transactional
     @Query(value = "UPDATE reservahabitacion SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago, idHabitacion = :idHabitacion, idCliente = :idCliente WHERE id = :id", nativeQuery = true)
-    void actualizarReservaHabitacion(@Param("id") Integer id, @Param("fechaInicio") String fechaInicio,
-            @Param("fechaFin") String fechaFin, @Param("pago") float pago, @Param("idHabitacion") Integer idHabitacion,
+    void actualizarReservaHabitacion(@Param("id") Integer id, @Param("fechaInicio") Date fechaInicio,
+            @Param("fechaFin") Date fechaFin, @Param("pago") float pago, @Param("idHabitacion") Integer idHabitacion,
             @Param("idCliente") Integer idCliente);
 
     //eliminar reserva de habitacion

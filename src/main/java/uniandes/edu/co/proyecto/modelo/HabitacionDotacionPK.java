@@ -23,17 +23,18 @@ public class HabitacionDotacionPK implements Serializable {
 
     public HabitacionDotacionPK(OfertaHabitacion idOfertaHabitacion, Dotacion idDotacion) 
     {
+        super();
         this.idOfertaHabitacion = idOfertaHabitacion;
         this.idDotacion = idDotacion;
     }
 
     //getters
     public OfertaHabitacion getIdOfertaHabitacion() {
-        return this.idOfertaHabitacion;
+        return idOfertaHabitacion;
     }
 
     public Dotacion getIdDotacion() {
-        return this.idDotacion;
+        return idDotacion;
     }
 
     //setters
