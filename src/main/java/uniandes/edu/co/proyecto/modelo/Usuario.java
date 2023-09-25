@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "USUARIO")
+@Table(name = "USUARIOS")
 public class Usuario {
     //id
     //nombre
@@ -31,8 +31,7 @@ public class Usuario {
     public Usuario() 
     {;}
 
-    public Usuario(Integer id, String nombre, String apellido, String correo, String rol) {
-        this.id = id;
+    public Usuario(String nombre, String apellido, String correo, String rol) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;

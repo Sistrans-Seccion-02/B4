@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 ;
 
 @Entity
-@Table(name = "RERSERVAHABITACION")
+@Table(name = "RERSERVASHABITACIONES")
 public class ReservaHabitacion {
 
     //id
@@ -43,8 +43,7 @@ public class ReservaHabitacion {
     public ReservaHabitacion() 
     {;}
 
-    public ReservaHabitacion(Integer id, Date fechaInicio, Date fechaFin, float pago, OfertaHabitacion idHabitacion, Usuario idCliente) {
-        this.id = id;
+    public ReservaHabitacion(Date fechaInicio, Date fechaFin, float pago, OfertaHabitacion idHabitacion, Usuario idCliente) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.pago = pago;

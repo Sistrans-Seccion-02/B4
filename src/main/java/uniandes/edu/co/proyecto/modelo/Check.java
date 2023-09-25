@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "check")
+@Table(name = "checks")
 public class Check {
 
     //id 
@@ -38,8 +38,7 @@ public class Check {
     public Check() 
     {;}
 
-    public Check(Integer id, boolean llegada, Date fecha, ReservaHabitacion idReserva, Usuario idUsuario) {
-        this.id = id;
+    public Check(boolean llegada, Date fecha, ReservaHabitacion idReserva, Usuario idUsuario) {
         this.llegada = llegada;
         this.fecha = fecha;
         this.idReserva = idReserva;

@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "dotacion")
+@Table(name = "dotaciones")
 public class Dotacion {
 
     //id
@@ -21,8 +21,7 @@ public class Dotacion {
     public Dotacion() 
     {;}
 
-    public Dotacion(Integer id, String nombre) {
-        this.id = id;
+    public Dotacion(String nombre) {
         this.nombre = nombre;
     }
 

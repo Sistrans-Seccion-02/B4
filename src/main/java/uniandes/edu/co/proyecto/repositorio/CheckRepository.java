@@ -1,4 +1,5 @@
 package uniandes.edu.co.proyecto.repositorio;
+import java.sql.Date;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -41,14 +42,14 @@ public interface CheckRepository extends JpaRepository<Check, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO check (llegada, fecha, idReserva, idUsuario) VALUES (:llegada, :fecha, :idReserva, :idUsuario)", nativeQuery = true)
-    void insertarCheck(@Param("llegada") Boolean llegada, @Param("fecha") String fecha, 
+    void insertarCheck(@Param("llegada") Boolean llegada, @Param("fecha") Date fecha, 
     @Param("idReserva") Integer idReserva, @Param("idUsuario") Integer idUsuario);
 
     //actualizar check
     @Modifying
     @Transactional
     @Query(value = "UPDATE check SET llegada = :llegada, fecha = :fecha, idReserva = :idReserva, idUsuario = :idUsuario WHERE id = :id", nativeQuery = true)
-    void actualizarCheck(@Param("id") Integer id, @Param("llegada") Boolean llegada, @Param("fecha") String fecha,
+    void actualizarCheck(@Param("id") Integer id, @Param("llegada") Boolean llegada, @Param("fecha") Date fecha,
     @Param("idReserva") Integer idReserva, @Param("idUsuario") Integer idUsuario);
 
     //eliminar check

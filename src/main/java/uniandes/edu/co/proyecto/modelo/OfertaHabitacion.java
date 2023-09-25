@@ -11,7 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "OFERTAHABITACION")
+@Table(name = "OFERTASHABITACIONES")
 public class OfertaHabitacion {
 
     //id
@@ -42,8 +42,7 @@ public class OfertaHabitacion {
     public OfertaHabitacion() 
     {;}
 
-    public OfertaHabitacion(Integer id, Integer capacidad, Date fechaInicio, Date fechaFin, float costo, String tipoHabitacion, Hotel idHotel) {
-        this.id = id;
+    public OfertaHabitacion(Integer capacidad, Date fechaInicio, Date fechaFin, float costo, String tipoHabitacion, Hotel idHotel) {
         this.capacidad = capacidad;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
