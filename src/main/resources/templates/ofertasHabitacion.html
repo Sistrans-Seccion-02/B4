@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Lista de Bebedores</title>
+    <title>Lista de Habitaciones</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
     <script th:src="@{/css/jquery.min.js}"></script>
     <script th:src="@{/css/bootstrap.min.js}"></script>
@@ -46,8 +46,8 @@
                         <td th:text="${habitacion.fechaFin}"></td>
                         <td th:text="${habitacion.costo}"></td>
                         <td th:text="${habitacion.tipoHabitacion}"></td>
-                        <td th:text="${habitacion.IdUsuario}"></td>
-                        <td th:text="${habitacion.IdHotel}"></td>
+                        <td th:text="${habitacion.IdUsuario.nombre}"></td>
+                        <td th:text="${habitacion.IdHotel.nombre}"></td>
                         <td>
                             <a th:href="@{ofertasHabitacion/{id}/edit(id=${habitacion.id})}">Editar</a>
                             <a th:href="@{ofertasHabitacion/{id}/delete(id=${habitacion.id})}"
@@ -59,7 +59,7 @@
             </tbody>
         </table>
         <div class="text-center">
-            <a th:href='@{ofertasHabitacion/new}' class="btn btn-primary">Añadir Usuario</a>
+            <a th:href='@{ofertasHabitacion/new}' class="btn btn-primary">Añadir Habitacion</a>
             <a th:href="@{/}" class="btn btn-primary"> Volver Atrás</a>
             </br>
         </div>

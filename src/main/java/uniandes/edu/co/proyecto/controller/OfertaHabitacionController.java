@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 
@@ -29,8 +30,13 @@ public class OfertaHabitacionController {
 
     //mostrar todas las ofertas de habitacion
     @GetMapping("/ofertasHabitacion")
-    public String ofertasHabitacion(Model model) {
-        model.addAttribute("ofertasHabitacion", ofertaHabitacionRepository.mostrarOfertasHabitacion());
+    public String ofertasHabitacion(Model model,Integer id) {
+
+        if (id != null && !id.equals("")) {
+            model.addAttribute("ofertasHabitacion", ofertaHabitacionRepository.mostrarOfertaHabitacionPorId(id));
+        } else {
+            model.addAttribute("ofertasHabitacion", ofertaHabitacionRepository.mostrarOfertasHabitacion());
+        }
         return "ofertasHabitacion";
     }
 
@@ -50,7 +56,7 @@ public class OfertaHabitacionController {
     }
 
     @GetMapping("/ofertasHabitacion/{id}/edit")
-    public String ofertaHabitacionEdit(Model model, @ModelAttribute("id")int id) {
+    public String editHabitacion(Model model, @ModelAttribute("id") Integer id) {
         OfertaHabitacion ofertaHabitacion = ofertaHabitacionRepository.mostrarOfertaHabitacionPorId(id);
         if (ofertaHabitacion != null) {
             model.addAttribute("ofertaHabitacion", ofertaHabitacion);
@@ -66,7 +72,7 @@ public class OfertaHabitacionController {
         return "redirect:/ofertasHabitacion";
     }
 
-    @PostMapping("/ofertasHabitacion/{id}/delete")
+    @GetMapping("/ofertasHabitacion/{id}/delete")
     public String ofertaHabitacionDelete(@ModelAttribute("id")int id) {
         ofertaHabitacionRepository.eliminarOfertaHabitacion(id);
         return "redirect:/ofertasHabitacion";

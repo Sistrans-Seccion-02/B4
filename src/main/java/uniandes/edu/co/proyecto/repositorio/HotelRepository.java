@@ -13,30 +13,30 @@ import uniandes.edu.co.proyecto.modelo.Hotel;
 public interface HotelRepository extends JpaRepository<Hotel, Integer> {
 
     //mostrar todos los hoteles
-    @Query(value = "SELECT * FROM hotel", nativeQuery = true)
+    @Query(value = "SELECT * FROM hoteles", nativeQuery = true)
     Collection<Hotel> mostrarHoteles();
 
     //mostrar hotel por id
-    @Query(value = "SELECT * FROM hotel WHERE id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM hoteles WHERE id = :id", nativeQuery = true)
     Hotel mostrarHotelporId(@Param("id") Integer id);
 
     //insertar hotel
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO hotel (nombre, ubicacion) VALUES (:nombre, :ubicacion)", nativeQuery = true)
+    @Query(value = "INSERT INTO hoteles (nombre, ubicacion) VALUES (:nombre, :ubicacion)", nativeQuery = true)
     void insertarHotel(@Param("nombre") String nombre, 
     @Param("ubicacion") String ubicacion);
 
     //actualizar hotel
     @Modifying
     @Transactional
-    @Query(value = "UPDATE hotel SET nombre = :nombre, ubicacion = :ubicacion WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE hoteles SET nombre = :nombre, ubicacion = :ubicacion WHERE id = :id", nativeQuery = true)
     void actualizarHotel(@Param("id") Integer id, @Param("nombre") String nombre, 
     @Param("ubicacion") String ubicacion);
 
     //eliminar hotel
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM hotel WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM hoteles WHERE id = :id", nativeQuery = true)
     void eliminarHotel(@Param("id") Integer id);
 }
