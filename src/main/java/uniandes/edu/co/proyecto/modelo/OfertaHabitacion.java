@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.modelo;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,28 +28,36 @@ public class OfertaHabitacion {
 
     private Integer capacidad;
 
+    @Column(name = "fechainicio")
     private Date fechaInicio;
 
+    @Column(name = "fechafin")
     private Date fechaFin;
 
     private float costo;
 
+    @Column(name = "tipohabitacion")
     private String tipoHabitacion;
 
     @ManyToOne
-    @JoinColumn(name="idHotel", referencedColumnName = "id")
-    private Hotel idHotel;
+    @JoinColumn(name="usuarios_id", referencedColumnName = "id")
+    private Usuario id_usuario;
+
+    @ManyToOne
+    @JoinColumn(name="hoteles_id", referencedColumnName = "id")
+    private Hotel id_hotel;
 
     public OfertaHabitacion() 
     {;}
 
-    public OfertaHabitacion(Integer capacidad, Date fechaInicio, Date fechaFin, float costo, String tipoHabitacion, Hotel idHotel) {
+    public OfertaHabitacion(Integer capacidad, Date fechaInicio, Date fechaFin, float costo, String tipoHabitacion,Usuario id_usuario ,Hotel id_hotel) {
         this.capacidad = capacidad;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.costo = costo;
         this.tipoHabitacion = tipoHabitacion;
-        this.idHotel = idHotel;
+        this.id_usuario = id_usuario;
+        this.id_hotel = id_hotel;
     }
 
     //getters
@@ -76,8 +85,12 @@ public class OfertaHabitacion {
         return this.tipoHabitacion;
     }
 
+    public Usuario getIdUsuario() {
+        return this.id_usuario;
+    }
+
     public Hotel getIdHotel() {
-        return this.idHotel;
+        return this.id_hotel;
     }
 
     //setters
@@ -106,8 +119,12 @@ public class OfertaHabitacion {
         this.tipoHabitacion=tipoHabitacion;
     }
 
+    public void setIdUsuario(Usuario idUsuario) {
+        this.id_usuario=idUsuario;
+    }
+
     public void setIdHotel(Hotel idHotel) {
-        this.idHotel=idHotel;
+        this.id_hotel=idHotel;
     }
 
     

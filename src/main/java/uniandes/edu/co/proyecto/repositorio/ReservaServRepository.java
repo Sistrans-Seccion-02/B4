@@ -29,7 +29,7 @@ public interface ReservaServRepository extends JpaRepository<ReservaServ, Intege
     //actualizar reserva
     @Modifying
     @Transactional
-    @Query(value = "UPDATE reservaservicios SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago", nativeQuery = true)
+    @Query(value = "UPDATE reservaservicios SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago WHERE id = :id", nativeQuery = true)
     void actualizarReservaServicio(@Param("id") Integer id, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 
     //borrar reserva

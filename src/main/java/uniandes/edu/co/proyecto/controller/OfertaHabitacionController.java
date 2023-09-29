@@ -45,7 +45,7 @@ public class OfertaHabitacionController {
     public String ofertaHabitacionSubmit(@ModelAttribute OfertaHabitacion ofertaHabitacion) {
         ofertaHabitacionRepository.insertarOfertaHabitacion(ofertaHabitacion.getCapacidad(), 
         ofertaHabitacion.getFechaInicio(), ofertaHabitacion.getFechaFin(), 
-        ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(), ofertaHabitacion.getIdHotel().getId());
+        ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(),ofertaHabitacion.getIdUsuario().getId() ,ofertaHabitacion.getIdHotel().getId());
         return "redirect:/ofertasHabitacion";
     }
 
@@ -62,7 +62,7 @@ public class OfertaHabitacionController {
 
     @PostMapping("/ofertasHabitacion/{id}/edit/save")
     public String ofertaHabitacionEditSubmit(@ModelAttribute OfertaHabitacion ofertaHabitacion, @ModelAttribute("id")int id) {
-        ofertaHabitacionRepository.actualizarOfertaHabitacion(id, ofertaHabitacion.getCapacidad(), ofertaHabitacion.getFechaInicio(), ofertaHabitacion.getFechaFin(), ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(), ofertaHabitacion.getIdHotel().getId());
+        ofertaHabitacionRepository.actualizarOfertaHabitacion(id, ofertaHabitacion.getCapacidad(), ofertaHabitacion.getFechaInicio(), ofertaHabitacion.getFechaFin(), ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(),ofertaHabitacion.getIdUsuario().getId() ,ofertaHabitacion.getIdHotel().getId());
         return "redirect:/ofertasHabitacion";
     }
 

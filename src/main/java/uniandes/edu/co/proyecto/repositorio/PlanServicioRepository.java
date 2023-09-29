@@ -35,6 +35,6 @@ public interface PlanServicioRepository extends JpaRepository<PlanServicio, Inte
     //eliminar relacion planconsumo servicio
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM planservicio WHERE idPlanConsumo = :idPlanConsumo AND idServicio = :idServicio", nativeQuery = true)
-    void eliminarPlanServicio(@Param("idPlanServicio") Integer idPlanConsumo, @Param("idServicio") Integer idServicio);
+    @Query(value = "DELETE FROM planservicio WHERE idPlanServicio = :idPlanServicio AND idServicio = :idServicio", nativeQuery = true)
+    void eliminarPlanServicio(@Param("idPlanServicio") Integer idPlanServicio, @Param("idServicio") Integer idServicio);
 }

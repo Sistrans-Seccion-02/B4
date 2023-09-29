@@ -2,16 +2,16 @@ package uniandes.edu.co.proyecto.modelo;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Embeddable
 public class ServicioHotelPK {
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="idServicio", referencedColumnName = "id")
     private Servicio idServicio;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="idHotel", referencedColumnName = "id")
     private Hotel idHotel;
 

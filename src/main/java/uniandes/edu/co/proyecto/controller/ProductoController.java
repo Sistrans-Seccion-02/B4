@@ -49,7 +49,7 @@ public class ProductoController {
         return "redirect:/productos";
     }
 
-    @GetMapping("/consumos/{id}/delete")
+    @GetMapping("/productos/{id}/delete")
     public String productoDelete(@PathVariable Integer id){
         productoRepository.eliminarProducto(id);
         return "redirect:/productos";

@@ -21,33 +21,33 @@ public interface OfertaHabitacionRepository extends JpaRepository<OfertaHabitaci
     //idHotel
 
     //mostrar todas las ofertas de habitacion
-    @Query(value = "SELECT * FROM ofertahabitacion", nativeQuery = true)
+    @Query(value = "SELECT * FROM ofertashabitaciones", nativeQuery = true)
     Collection<OfertaHabitacion> mostrarOfertasHabitacion();
 
     //mostrar oferta de habitacion por id
-    @Query(value = "SELECT * FROM ofertahabitacion WHERE id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM ofertashabitaciones WHERE id = :id", nativeQuery = true)
     OfertaHabitacion mostrarOfertaHabitacionPorId(@Param("id") Integer id);
 
     //insertar oferta de habitacion
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO ofertahabitacion (capacidad, fechaInicio, fechaFin, costo, tipoHabitacion, idHotel) VALUES (:capacidad, :fechaInicio, :fechaFin, :costo, :tipoHabitacion, :idHotel)", nativeQuery = true)
+    @Query(value = "INSERT INTO ofertashabitaciones (id,capacidad, fechaInicio, fechaFin, costo, tipoHabitacion,usuarios_id ,hoteles_id) VALUES (hoteles_sequence.nextval,:capacidad, :fechaInicio, :fechaFin, :costo, :tipoHabitacion,:usuarios_id ,:hoteles_id)", nativeQuery = true)
     void insertarOfertaHabitacion(@Param("capacidad") Integer capacidad, 
     @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, 
-    @Param("costo") float costo, @Param("tipoHabitacion") String tipoHabitacion, @Param("idHotel") Integer idHotel);
+    @Param("costo") float costo, @Param("tipoHabitacion") String tipoHabitacion,@Param("usuarios_id") Integer usuarios_id ,@Param("hoteles_id") Integer hoteles_id);
 
     //actualizar oferta de habitacion
     @Modifying
     @Transactional
-    @Query(value = "UPDATE ofertahabitacion SET capacidad = :capacidad, fechaInicio = :fechaInicio, fechaFin = :fechaFin, costo = :costo, tipoHabitacion = :tipoHabitacion, idHotel = :idHotel WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE ofertashabitaciones SET capacidad = :capacidad, fechaInicio = :fechaInicio, fechaFin = :fechaFin, costo = :costo, tipoHabitacion = :tipoHabitacion,:usuarios_id ,:hoteles_id WHERE id = :id", nativeQuery = true)
     void actualizarOfertaHabitacion(@Param("id") Integer id, @Param("capacidad") Integer capacidad, 
     @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, 
-    @Param("costo") float costo, @Param("tipoHabitacion") String tipoHabitacion, @Param("idHotel") Integer idHotel);
+    @Param("costo") float costo, @Param("tipoHabitacion") String tipoHabitacion, @Param("usuarios_id") Integer usuarios_id ,@Param("hoteles_id") Integer hoteles_id);
 
     //eliminar oferta de habitacion
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM ofertahabitacion WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM ofertashabitaciones WHERE id = :id", nativeQuery = true)
     void eliminarOfertaHabitacion(@Param("id") Integer id);
     
 }

@@ -20,7 +20,7 @@ public class ServicioHotel {
     }
 
     public ServicioHotelPK getPk() {
-        return this.pk;
+        return pk;
     }
 
     public void setPk(ServicioHotelPK pk) {

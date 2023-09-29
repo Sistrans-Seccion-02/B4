@@ -20,7 +20,7 @@ public class HabitacionDotacion {
     }
 
     public HabitacionDotacionPK getPk() {
-        return this.pk;
+        return pk;
     }
 
     public void setPk(HabitacionDotacionPK pk) {

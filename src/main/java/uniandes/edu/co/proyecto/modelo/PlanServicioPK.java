@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Embeddable
 public class PlanServicioPK implements Serializable {
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="idServicio", referencedColumnName = "id")
     private Servicio idServicio;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="idPlanConsumo", referencedColumnName = "id")
     private PlanConsumo idPlanConsumo;
 

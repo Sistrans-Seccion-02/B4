@@ -3,16 +3,16 @@ import java.io.Serializable;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Embeddable
 public class HabitacionDotacionPK implements Serializable {
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="idOfertaHabitacion", referencedColumnName = "id")
     private OfertaHabitacion idOfertaHabitacion;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="idDotacion", referencedColumnName = "id")
     private Dotacion idDotacion;
 

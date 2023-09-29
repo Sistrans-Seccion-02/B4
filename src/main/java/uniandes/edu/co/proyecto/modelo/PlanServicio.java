@@ -20,7 +20,7 @@ public class PlanServicio {
     }
 
     public PlanServicioPK getPk() {
-        return this.pk;
+        return pk;
     }
 
     public void setPk(PlanServicioPK pk) {

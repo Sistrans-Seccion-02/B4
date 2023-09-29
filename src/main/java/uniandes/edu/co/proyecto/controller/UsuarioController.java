@@ -24,40 +24,45 @@ public class UsuarioController {
 
     //mostrar todos los usuarios
     @GetMapping("/usuarios")
-    public String usuarios(Model model) {
-        model.addAttribute("usuarios", usuarioRepository.mostrarUsuarios());
+    public String usuarios(Model model,Integer id) {
+        if(id != null && !id.equals("")){
+            model.addAttribute("usuarios", usuarioRepository.mostrarUsuarioPorId(id));
+        }
+        else{
+            model.addAttribute("usuarios", usuarioRepository.mostrarUsuarios());
+        }
         return "usuarios";
     }
 
     @GetMapping("/usuarios/new")
     public String usuarioForm(Model model) {
         model.addAttribute("usuario", new Usuario());
-        return "usuarios/new";
+        return "usuarioNuevo";
     }
 
     @PostMapping("/usuarios/new/save")
-    public String usuarioSubmit(@ModelAttribute Usuario usuario) {
-        usuarioRepository.insertarUsuario(usuario.getNombre(), usuario.getApellido(), usuario.getCorreo(), usuario.getRol());
+    public String usuarioGuardar(@ModelAttribute Usuario usuario) {
+        usuarioRepository.insertarUsuario(usuario.getId(),usuario.getNombre(), usuario.getApellido(), usuario.getCorreo(), usuario.getRol());
         return "redirect:/usuarios";
     }
 
     @GetMapping("/usuarios/{id}/edit")
-    public String usuarioEdit(Model model, @PathVariable Integer id) {
+    public String usuarioEdit(Model model, @PathVariable("id") Integer id) {
         Usuario usuario = usuarioRepository.mostrarUsuarioPorId(id);
         if (usuario != null) {
             model.addAttribute("usuario", usuario);
-            return "usuarios/edit";
+            return "usuarioEditar";
         }
         return "redirect:/usuarios";
     }
 
     @PostMapping("/usuarios/{id}/edit/save")
-    public String usuarioEditSubmit(@ModelAttribute Usuario usuario, @PathVariable Integer id) {
+    public String usuarioEditSubmit(@ModelAttribute Usuario usuario, @PathVariable("id") Integer id) {
         usuarioRepository.actualizarUsuario(id, usuario.getNombre(), usuario.getApellido(), usuario.getCorreo(), usuario.getRol());
         return "redirect:/usuarios";
     }
 
-    @PostMapping("/usuarios/{id}/delete")
+    @GetMapping("/usuarios/{id}/delete")
     public String usuarioDelete(@PathVariable Integer id) {
         usuarioRepository.eliminarUsuario(id);
         return "redirect:/usuarios";
