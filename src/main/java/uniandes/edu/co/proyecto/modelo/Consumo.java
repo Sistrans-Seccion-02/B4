@@ -5,6 +5,8 @@ import java.util.Date;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 public class Consumo {
     
@@ -17,6 +19,10 @@ public class Consumo {
     private Float costo;
 
     private Date fecha;
+
+    @ManyToOne
+    @JoinColumn(name="idReserva", referencedColumnName = "id")
+    private ReservaHabitacion idReserva;
 
     public Consumo(Integer id, String descripcion, Float costo, Date fecha)
     {
@@ -59,6 +65,14 @@ public class Consumo {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public ReservaHabitacion getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(ReservaHabitacion idReserva) {
+        this.idReserva = idReserva;
     }
 
 
