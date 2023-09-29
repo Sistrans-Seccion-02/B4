@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Embeddable;
 
+@Embeddable
 public class EstablecimientoProductoPK implements Serializable{
     
     @ManyToOne
