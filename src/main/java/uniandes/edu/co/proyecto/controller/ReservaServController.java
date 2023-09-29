@@ -7,30 +7,42 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.ReservaServ;
 import uniandes.edu.co.proyecto.repositorio.ReservaServRepository;
+import uniandes.edu.co.proyecto.repositorio.ServicioRepository;
 
 @Controller
 public class ReservaServController {
     @Autowired
     private ReservaServRepository reservaServRepository;
 
+    @Autowired
+    private ServicioRepository servicioRepository;
+
     @GetMapping("/reservaservicios")
-    public String reservaservicios(Model model, Date fechaInicio, Date fechaFin, Float pago){
-        model.addAttribute("reservaservicios", reservaServRepository.mostrarReservasServicios());
+    public String reservaservicios(Model model, Integer id){
+        if(id != null && !id.equals("")){
+            model.addAttribute("reservaservicios", reservaServRepository.mostrarReservaServicioPorId(id));
+        }
+        else{
+            model.addAttribute("reservaservicios", reservaServRepository.mostrarReservasServicios());
+        }
+        
         return "reservaservicios";
     }
 
     @GetMapping("/reservaservicios/new")
     public String reservaserviciosForm(Model model){
         model.addAttribute("reservaservicios", new ReservaServ());
+        model.addAttribute("servicios", servicioRepository.mostrarServicios());
         return "reservaserviciosNuevo";
     }
 
-    @GetMapping("/reservaservicios/new/save")
+    @PostMapping("/reservaservicios/new/save")
     public String reservaserviciosSave(ReservaServ reservaServ){
-        reservaServRepository.insertarReservaServicio(reservaServ.getFechaInicio(), reservaServ.getFechaFin(), reservaServ.getPago());
+        reservaServRepository.insertarReservaServicio(reservaServ.getfechaInicio(), reservaServ.getfechaFin(), reservaServ.getPago(), reservaServ.getid_servicio().getId());
         return "redirect:/reservaservicios";
     }
 
@@ -40,14 +52,15 @@ public class ReservaServController {
 
         if (reservaServ != null){
             model.addAttribute("reservaServ", reservaServ);
+            model.addAttribute("servicios", servicioRepository.mostrarServicios());
             return "reservaserviciosEditar";
         }
         else return "redirect:/reservaservicios";
     }
 
-    @GetMapping("/reservaservicios/{id}/edit/save")
+    @PostMapping("/reservaservicios/{id}/edit/save")
     public String reservaserviciosEditarSave(@PathVariable Integer id, ReservaServ reservaServ){
-        reservaServRepository.actualizarReservaServicio(id, reservaServ.getFechaInicio(), reservaServ.getFechaFin());
+        reservaServRepository.actualizarReservaServicio(id, reservaServ.getfechaInicio(), reservaServ.getfechaFin(), reservaServ.getPago(), reservaServ.getid_servicio().getId());
         return "redirect:/reservaservicios";
     }
 
