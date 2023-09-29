@@ -19,9 +19,9 @@ public class ReservaServ {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column (name = "fechainicio")
-    private Date fechaInicio;
+    public Date fechaInicio;
     @Column (name = "fechafin")
-    private Date fechaFin;
+    public Date fechaFin;
     private Float pago;
 
     @ManyToOne
