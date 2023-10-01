@@ -36,7 +36,7 @@ public interface ConsumoRepository extends JpaRepository<Consumo, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE consumos SET descripcion = :descripcion, costo = :costo, fecha = :fecha, idReserva = :idReserva WHERE id = :id", nativeQuery = true)
-    void actualizarConsumo(@Param("id")Integer id, @Param("descripcion") String descripcion, @Param("costo") Float costo, @Param("fecha") Date fecha );
+    void actualizarConsumo(@Param("id")Integer id, @Param("descripcion") String descripcion, @Param("costo") Float costo, @Param("fecha") Date fecha, @Param("idReserva") Integer idReserva );
     
     //borrar consumo 
     @Modifying
