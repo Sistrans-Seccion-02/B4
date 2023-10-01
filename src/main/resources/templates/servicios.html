@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Lista de Usuarios</title>
+    <title>Lista de Servicios</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
     <script th:src="@{/css/jquery.min.js}"></script>
     <script th:src="@{/css/bootstrap.min.js}"></script>
@@ -10,11 +9,11 @@
 
 <body>
     <div class="text-center">
-        <h1>Lista de Usuarios</h1>
+        <h1>Lista de Servicios</h1>
 
 
         <br />
-        <form th:action="@{usuarios}" method="get">
+        <form th:action="@{servicios}" method="get">
             <div class="input-group input-group-sm mb-2 justify-content-center">
                 <input class='w-25' id="txtSearch" type="text" name="id">
                 <div class="input-group-append">
@@ -29,23 +28,21 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Correo</th>
-                    <th>Tipo Usuario</th>
+                    <th>Costo</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
-                <th:block th:each="usuario : ${usuarios}">
+                <th:block th:each="servicio : ${servicios}">
                     <tr>
-                        <td th:text="${usuario.id}"></td>
-                        <td th:text="${usuario.nombre}"></td>
-                        <td th:text="${usuario.apellido}"></td>
-                        <td th:text="${usuario.correo}"></td>
-                        <td th:text="${usuario.rol}"></td>
+                        <td th:text="${servicio.id}"></td>
+                        <td th:text="${servicio.nombre}"></td>
+                        <td th:text="${servicio.costo}"></td>
+                        <td th:text="${servicio.descripcion}"></td>
                         <td>
-                            <a th:href="@{usuarios/{id}/edit(id=${usuario.id})}">Editar</a>
-                            <a th:href="@{usuarios/{id}/delete(id=${usuario.id})}"
-                                onclick="return confirm('¿Estás seguro de borrar este usuario?')">Borrar</a>
+                            <a th:href="@{servicios/{id}/edit(id=${servicio.id})}">Editar</a>
+                            <a th:href="@{servicios/{id}/delete(id=${servicio.id})}"
+                                onclick="return confirm('¿Estás seguro de borrar este Servicio?')">Borrar</a>
                         </td>
                     </tr>
 
@@ -53,11 +50,10 @@
             </tbody>
         </table>
         <div class="text-center">
-            <a th:href='@{usuarios/new}' class="btn btn-primary">Añadir Usuario</a>
+            <a th:href='@{servicios/new}' class="btn btn-primary">Añadir Servicio</a>
             <a th:href="@{/}" class="btn btn-primary"> Volver Atrás</a>
             </br>
         </div>
         <br />
 </body>
-
 </html>

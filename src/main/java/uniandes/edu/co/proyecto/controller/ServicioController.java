@@ -26,12 +26,12 @@ public class ServicioController {
     @GetMapping("/servicios/new")
     public String servicioForm(Model model) {
         model.addAttribute("servicio", new Servicio());
-        return "servicios/new";
+        return "serviciosNuevo";
     }
 
     @PostMapping("/servicios/new/save")
     public String servicioSubmit(@ModelAttribute Servicio servicio) {
-        servicioRepository.insertarServicio(servicio.getNombre(), servicio.getCosto(), servicio.getDescripcion());
+        servicioRepository.insertarServicio(servicio.getId(), servicio.getNombre(), servicio.getCosto(), servicio.getDescripcion());
         return "redirect:/servicios";
     }
 
@@ -40,7 +40,7 @@ public class ServicioController {
         Servicio servicio = servicioRepository.mostrarServicioPorId(id);
         if (servicio != null) {
             model.addAttribute("servicio", servicio);
-            return "servicios/edit";
+            return "serviciosEditar";
         }
         return "redirect:/servicios";
     }
@@ -51,7 +51,7 @@ public class ServicioController {
         return "redirect:/servicios";
     }
 
-    @PostMapping("/servicios/{id}/delete")
+    @GetMapping("/servicios/{id}/delete")
     public String servicioDelete(@PathVariable Integer id) {
         servicioRepository.eliminarServicio(id);
         return "redirect:/servicios";

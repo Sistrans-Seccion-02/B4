@@ -23,8 +23,8 @@ public interface HotelRepository extends JpaRepository<Hotel, Integer> {
     //insertar hotel
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO hoteles (nombre, ubicacion) VALUES (:nombre, :ubicacion)", nativeQuery = true)
-    void insertarHotel(@Param("nombre") String nombre, 
+    @Query(value = "INSERT INTO hoteles (id, nombre, ubicacion) VALUES (:id, :nombre, :ubicacion)", nativeQuery = true)
+    void insertarHotel(@Param("id") int id, @Param("nombre") String nombre, 
     @Param("ubicacion") String ubicacion);
 
     //actualizar hotel
