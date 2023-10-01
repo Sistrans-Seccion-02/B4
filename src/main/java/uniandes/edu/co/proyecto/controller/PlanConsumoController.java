@@ -51,7 +51,7 @@ public class PlanConsumoController {
         return "redirect:/planesconsumo";
     }
 
-    @PostMapping("/planesconsumo/{id}/delete")
+    @GetMapping("/planesconsumo/{id}/delete")
     public String planconsumoDelete(@PathVariable Integer id) {
         planconsumoRepository.eliminarPlanConsumo(id);
         return "redirect:/planesconsumo";
