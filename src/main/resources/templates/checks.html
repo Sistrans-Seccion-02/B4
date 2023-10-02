@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Lista de Usuarios</title>
+    <title>Lista de llegadas y salidas</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
     <script th:src="@{/css/jquery.min.js}"></script>
     <script th:src="@{/css/bootstrap.min.js}"></script>
@@ -10,11 +10,11 @@
 
 <body>
     <div class="text-center">
-        <h1>Lista de Usuarios</h1>
+        <h1>Lista Checks</h1>
 
 
         <br />
-        <form th:action="@{usuarios}" method="get">
+        <form th:action="@{check}" method="get">
             <div class="input-group input-group-sm mb-2 justify-content-center">
                 <input class='w-25' id="txtSearch" type="text" name="id">
                 <div class="input-group-append">
@@ -28,24 +28,24 @@
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
+                    <th>Llegada</th>
                     <th>Apellido</th>
-                    <th>Correo</th>
-                    <th>Tipo Usuario</th>
+                    <th>usuario</th>
+                    <th>Reserva</th>
                 </tr>
             </thead>
             <tbody>
-                <th:block th:each="usuario : ${usuarios}">
+                <th:block th:each="check : ${checks}">
                     <tr>
-                        <td th:text="${usuario.id}"></td>
-                        <td th:text="${usuario.nombre}"></td>
-                        <td th:text="${usuario.apellido}"></td>
-                        <td th:text="${usuario.correo}"></td>
-                        <td th:text="${usuario.rol}"></td>
+                        <td th:text="${check.id}"></td>
+                        <td th:text="${check.llegada}"></td>
+                        <td th:text="${check.fecha}"></td>
+                        <td th:text="${check.idUsuario}"></td>
+                        <td th:text="${check.reservahabitaciones_id}"></td>
                         <td>
-                            <a th:href="@{usuarios/{id}/edit(id=${usuario.id})}">Editar</a>
-                            <a th:href="@{usuarios/{id}/delete(id=${usuario.id})}"
-                                onclick="return confirm('¿Estás seguro de borrar este usuario?')">Borrar</a>
+                            <a th:href="@{checks/{id}/edit(id=${check.id})}">Editar</a>
+                            <a th:href="@{checks/{id}/delete(id=${check.id})}"
+                                onclick="return confirm('¿Estás seguro de borrar este check?')">Borrar</a>
                         </td>
                     </tr>
 
@@ -53,7 +53,7 @@
             </tbody>
         </table>
         <div class="text-center">
-            <a th:href='@{usuarios/new}' class="btn btn-primary">Añadir Usuario</a>
+            <a th:href='@{checks/new}' class="btn btn-primary">Añadir check</a>
             <a th:href="@{/}" class="btn btn-primary"> Volver Atrás</a>
             </br>
         </div>

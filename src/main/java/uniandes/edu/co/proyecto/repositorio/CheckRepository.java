@@ -19,43 +19,43 @@ public interface CheckRepository extends JpaRepository<Check, Integer> {
     //idUsuario
 
     //mostrar todos los checks sin importar si son de llegada o salida
-    @Query(value = "SELECT * FROM check", nativeQuery = true)
+    @Query(value = "SELECT * FROM \"Check\"", nativeQuery = true)
     Collection<Check> mostrarChecks();
 
     //mostrar todos los checks que sean de llegada
-    @Query(value = "SELECT * FROM check WHERE llegada = true", nativeQuery = true)
+    @Query(value = "SELECT * FROM \"Check\" WHERE llegada = true", nativeQuery = true)
     Collection<Check> mostrarChecksLlegada();
 
     //mostrar todos los checks que sean de salida
-    @Query(value = "SELECT * FROM check WHERE llegada = false", nativeQuery = true)
+    @Query(value = "SELECT * FROM \"Check\" WHERE llegada = false", nativeQuery = true)
     Collection<Check> mostrarChecksSalida();
 
     //mostrar el check por id
-    @Query(value = "SELECT * FROM check WHERE id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM \"Check\" WHERE id = :id", nativeQuery = true)
     Check mostrarCheckPorId(@Param("id") Integer id);
 
     //mostrar los checks de un usuario
-    @Query(value = "SELECT * FROM check WHERE idUsuario = :idUsuario", nativeQuery = true)
+    @Query(value = "SELECT * FROM \"Check\" WHERE idUsuario = :idUsuario", nativeQuery = true)
     Collection<Check> mostrarChecksPorUsuario(@Param("idUsuario") Integer idUsuario);
 
     //insertar check
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO check (llegada, fecha, idReserva, idUsuario) VALUES (:llegada, :fecha, :idReserva, :idUsuario)", nativeQuery = true)
+    @Query(value = "INSERT INTO \"Check\" (llegada, fecha, idReserva, idUsuario) VALUES (:llegada, :fecha, :idReserva, :idUsuario)", nativeQuery = true)
     void insertarCheck(@Param("llegada") Boolean llegada, @Param("fecha") Date fecha, 
     @Param("idReserva") Integer idReserva, @Param("idUsuario") Integer idUsuario);
 
     //actualizar check
     @Modifying
     @Transactional
-    @Query(value = "UPDATE check SET llegada = :llegada, fecha = :fecha, idReserva = :idReserva, idUsuario = :idUsuario WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE \"Check\" SET llegada = :llegada, fecha = :fecha, idReserva = :idReserva, idUsuario = :idUsuario WHERE id = :id", nativeQuery = true)
     void actualizarCheck(@Param("id") Integer id, @Param("llegada") Boolean llegada, @Param("fecha") Date fecha,
     @Param("idReserva") Integer idReserva, @Param("idUsuario") Integer idUsuario);
 
     //eliminar check
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM check WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM \"Check\" WHERE id = :id", nativeQuery = true)
     void eliminarCheck(@Param("id") Integer id);
 
   

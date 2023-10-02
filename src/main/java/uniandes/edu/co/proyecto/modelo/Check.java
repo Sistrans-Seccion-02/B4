@@ -18,7 +18,7 @@ public class Check {
     //llegada:bool para saber si es llegada o salida
     //fecha
     //idReserva
-    //idUsuario
+    //usuarios_id
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -28,21 +28,21 @@ public class Check {
     private Date fecha;
 
     @ManyToOne
-    @JoinColumn(name="idReserva", referencedColumnName = "id")
-    private ReservaHabitacion idReserva;
+    @JoinColumn(name="reservahabitaciones_id", referencedColumnName = "id")
+    private ReservaHabitacion reservahabitaciones_id;
 
     @ManyToOne
-    @JoinColumn(name="idUsuario", referencedColumnName = "id")
-    private Usuario idUsuario;
+    @JoinColumn(name="usuarios_id", referencedColumnName = "id")
+    private Usuario usuarios_id;
 
     public Check() 
     {;}
 
-    public Check(boolean llegada, Date fecha, ReservaHabitacion idReserva, Usuario idUsuario) {
+    public Check(boolean llegada, Date fecha, ReservaHabitacion reservahabitaciones_id, Usuario usuarios_id) {
         this.llegada = llegada;
         this.fecha = fecha;
-        this.idReserva = idReserva;
-        this.idUsuario = idUsuario;
+        this.reservahabitaciones_id = reservahabitaciones_id;
+        this.usuarios_id = usuarios_id;
     }
 
     //getters
@@ -59,11 +59,11 @@ public class Check {
     }
 
     public ReservaHabitacion getIdReserva() {
-        return this.idReserva;
+        return this.reservahabitaciones_id;
     }
 
     public Usuario getIdUsuario() {
-        return this.idUsuario;
+        return this.usuarios_id;
     }
 
     //setters
@@ -80,12 +80,12 @@ public class Check {
         this.fecha = fecha;
     }
 
-    public void setIdReserva(ReservaHabitacion idReserva) {
-        this.idReserva = idReserva;
+    public void setIdReserva(ReservaHabitacion reservahabitaciones_id) {
+        this.reservahabitaciones_id = reservahabitaciones_id;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(Usuario usuarios_id) {
+        this.usuarios_id = usuarios_id;
     }
 
     

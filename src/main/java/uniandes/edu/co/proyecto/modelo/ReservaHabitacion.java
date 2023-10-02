@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.modelo;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,36 +20,43 @@ public class ReservaHabitacion {
     //fechaInicio
     //fechaFin
     //pago
-    //idHabitacion
-    //idCliente
+    //ofertashabitaciones_id
+    //usuarios_id
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "fechainicio")
     private Date fechaInicio;
-
+    
+    @Column(name = "fechafin")
     private Date fechaFin;
 
     private float pago;
 
     @ManyToOne
-    @JoinColumn(name="idHabitacion", referencedColumnName = "id")
-    private OfertaHabitacion idHabitacion;
+    @JoinColumn(name="planesconsumo_id", referencedColumnName = "id")
+    private PlanConsumo planesconsumo_id;
 
     @ManyToOne
-    @JoinColumn(name="idCliente", referencedColumnName = "id")
-    private Usuario idCliente;
+    @JoinColumn(name="ofertashabitaciones_id", referencedColumnName = "id")
+    private OfertaHabitacion ofertashabitaciones_id;
+
+    @ManyToOne
+    @JoinColumn(name="usuarios_id", referencedColumnName = "id")
+    private Usuario usuarios_id;
 
     public ReservaHabitacion() 
     {;}
 
-    public ReservaHabitacion(Date fechaInicio, Date fechaFin, float pago, OfertaHabitacion idHabitacion, Usuario idCliente) {
+    public ReservaHabitacion(Date fechaInicio, Date fechaFin, float pago,PlanConsumo planesconsumo_id ,OfertaHabitacion ofertashabitaciones_id, Usuario usuarios_id) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.pago = pago;
-        this.idHabitacion = idHabitacion;
-        this.idCliente = idCliente;
+        this.planesconsumo_id = planesconsumo_id;
+        this.ofertashabitaciones_id = ofertashabitaciones_id;
+        this.usuarios_id = usuarios_id;
     }
 
     //getters
@@ -68,12 +76,16 @@ public class ReservaHabitacion {
         return this.pago;
     }
 
+    public PlanConsumo getplanesconsumo_id() {
+        return this.planesconsumo_id;
+    }
+
     public OfertaHabitacion getIdHabitacion() {
-        return this.idHabitacion;
+        return this.ofertashabitaciones_id;
     }
 
     public Usuario getIdCliente() {
-        return this.idCliente;
+        return this.usuarios_id;
     }
 
     //setters
@@ -93,12 +105,16 @@ public class ReservaHabitacion {
         this.pago=pago;
     }
 
-    public void setIdHabitacion(OfertaHabitacion idHabitacion) {
-        this.idHabitacion=idHabitacion;
+    public void setplanesconsumo_id(PlanConsumo planesconsumo_id) {
+        this.planesconsumo_id=planesconsumo_id;
     }
 
-    public void setIdCliente(Usuario idCliente) {
-        this.idCliente=idCliente;
+    public void setIdHabitacion(OfertaHabitacion ofertashabitaciones_id) {
+        this.ofertashabitaciones_id=ofertashabitaciones_id;
+    }
+
+    public void setIdCliente(Usuario usuarios_id) {
+        this.usuarios_id=usuarios_id;
     }
 
     

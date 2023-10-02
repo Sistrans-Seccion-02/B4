@@ -72,7 +72,7 @@ public class CheckController {
     }
 
     @GetMapping("/checks/{id}/edit")
-    public String checkEditarForm(@PathVariable Integer id, Model model) {
+    public String checksForm(@PathVariable Integer id, Model model) {
         Check check = checkRepository.mostrarCheckPorId(id);
 
         if (check != null) {

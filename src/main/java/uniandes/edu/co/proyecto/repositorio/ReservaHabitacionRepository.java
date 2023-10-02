@@ -21,33 +21,33 @@ public interface ReservaHabitacionRepository extends JpaRepository<ReservaHabita
     //idCliente
 
     //mostrar todas las reservas de habitacion
-    @Query(value = "SELECT * FROM reservahabitacion", nativeQuery = true)
+    @Query(value = "SELECT * FROM reservahabitaciones", nativeQuery = true)
     Collection<ReservaHabitacion> mostrarReservasHabitacion();
 
     //mostrar reserva de habitacion por id
-    @Query(value = "SELECT * FROM reservahabitacion WHERE id = :id", nativeQuery = true)
+    @Query(value = "SELECT * FROM reservahabitaciones WHERE id = :id", nativeQuery = true)
     ReservaHabitacion mostrarReservaHabitacionPorId(@Param("id") Integer id);
 
     //insertar reserva de habitacion
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO reservahabitacion (fechaInicio, fechaFin, pago, idHabitacion, idCliente) VALUES (:fechaInicio, :fechaFin, :pago, :idHabitacion, :idCliente)", nativeQuery = true)
+    @Query(value = "INSERT INTO reservahabitaciones (fechaInicio, fechaFin, pago,planesconsumo_id,ofertashabitaciones_id, usuarios_id ) VALUES (:fechaInicio, :fechaFin, :pago,:planesconsumo_id ,:ofertashabitaciones_id, :usuarios_id)", nativeQuery = true)
     void insertarReservaHabitacion(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin,
-            @Param("pago") float pago, @Param("idHabitacion") Integer idHabitacion,
-            @Param("idCliente") Integer idCliente);
+            @Param("pago") float pago,@Param("planesconsumo_id") Integer planesconsumo_id  ,@Param("ofertashabitaciones_id") Integer ofertashabitaciones_id,
+            @Param("usuarios_id") Integer usuarios_id);
 
     //actualizar reserva de habitacion
     @Modifying
     @Transactional
-    @Query(value = "UPDATE reservahabitacion SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago, idHabitacion = :idHabitacion, idCliente = :idCliente WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE reservahabitaciones SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago,planesconsumo_id =:planesconsumo_id ,ofertashabitaciones_id = :idHabitacion, usuarios_id = :idCliente WHERE id = :id", nativeQuery = true)
     void actualizarReservaHabitacion(@Param("id") Integer id, @Param("fechaInicio") Date fechaInicio,
-            @Param("fechaFin") Date fechaFin, @Param("pago") float pago, @Param("idHabitacion") Integer idHabitacion,
-            @Param("idCliente") Integer idCliente);
+            @Param("fechaFin") Date fechaFin, @Param("pago") float pago,@Param("planesconsumo_id") Integer planesconsumo_id ,@Param("ofertashabitaciones_id") Integer ofertashabitaciones_id,
+            @Param("usuarios_id") Integer usuarios_id);
 
     //eliminar reserva de habitacion
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM reservahabitacion WHERE id = :id", nativeQuery = true)
+    @Query(value = "DELETE FROM reservahabitaciones WHERE id = :id", nativeQuery = true)
     void eliminarReservaHabitacion(@Param("id") Integer id);
     
 }

@@ -49,7 +49,7 @@ public class ReservaHabitacionController {
     @PostMapping("/reservasHabitacion/new/save")
     public String reservaHabitacionSubmit(@ModelAttribute ReservaHabitacion reservaHabitacion) {
         reservaHabitacionRepository.insertarReservaHabitacion(reservaHabitacion.getFechaInicio(), 
-        reservaHabitacion.getFechaFin(), reservaHabitacion.getPago(), 
+        reservaHabitacion.getFechaFin(), reservaHabitacion.getPago(), reservaHabitacion.getplanesconsumo_id().getId(), 
         reservaHabitacion.getIdHabitacion().getId(), reservaHabitacion.getIdCliente().getId());
         return "redirect:/reservasHabitacion";
     }
@@ -69,7 +69,7 @@ public class ReservaHabitacionController {
     @PostMapping("/reservasHabitacion/{id}/edit/save")
     public String reservaHabitacionEditSubmit(@ModelAttribute ReservaHabitacion reservaHabitacion, @PathVariable Integer id) {
         reservaHabitacionRepository.actualizarReservaHabitacion(id, reservaHabitacion.getFechaInicio(), 
-        reservaHabitacion.getFechaFin(), reservaHabitacion.getPago(), 
+        reservaHabitacion.getFechaFin(), reservaHabitacion.getPago(),reservaHabitacion.getplanesconsumo_id().getId(),
         reservaHabitacion.getIdHabitacion().getId(), reservaHabitacion.getIdCliente().getId());
         return "redirect:/reservasHabitacion";
     }
