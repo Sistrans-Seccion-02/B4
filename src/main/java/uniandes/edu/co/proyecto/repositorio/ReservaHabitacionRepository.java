@@ -39,9 +39,11 @@ public interface ReservaHabitacionRepository extends JpaRepository<ReservaHabita
     //actualizar reserva de habitacion
     @Modifying
     @Transactional
-    @Query(value = "UPDATE reservahabitaciones SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago,planesconsumo_id =:planesconsumo_id ,ofertashabitaciones_id = :idHabitacion, usuarios_id = :idCliente WHERE id = :id", nativeQuery = true)
+    @Query(value = "UPDATE reservahabitaciones SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago, planesconsumo_id = :planesconsumo_id, ofertashabitaciones_id = :ofertashabitaciones_id, usuarios_id = :usuarios_id WHERE id = :id", nativeQuery = true)
     void actualizarReservaHabitacion(@Param("id") Integer id, @Param("fechaInicio") Date fechaInicio,
-            @Param("fechaFin") Date fechaFin, @Param("pago") float pago,@Param("planesconsumo_id") Integer planesconsumo_id ,@Param("ofertashabitaciones_id") Integer ofertashabitaciones_id,
+            @Param("fechaFin") Date fechaFin, @Param("pago") float pago,
+            @Param("planesconsumo_id") Integer planesconsumo_id ,
+            @Param("ofertashabitaciones_id") Integer ofertashabitaciones_id,
             @Param("usuarios_id") Integer usuarios_id);
 
     //eliminar reserva de habitacion
