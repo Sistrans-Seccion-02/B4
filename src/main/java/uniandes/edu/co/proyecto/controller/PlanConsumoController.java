@@ -26,12 +26,12 @@ public class PlanConsumoController {
     @GetMapping("/planesconsumo/new")
     public String planconsumoForm(Model model) {
         model.addAttribute("planconsumo", new PlanConsumo());
-        return "planesconsumo/new";
+        return "planesconsumoNuevo";
     }
 
     @PostMapping("/planesconsumo/new/save")
     public String planconsumoSubmit(@ModelAttribute PlanConsumo planconsumo) {
-        planconsumoRepository.insertarPlanConsumo(planconsumo.getNombre(), planconsumo.getDescuento());
+        planconsumoRepository.insertarPlanConsumo(planconsumo.getId(), planconsumo.getNombre(), planconsumo.getDescuento());
         return "redirect:/planesconsumo";
     }
 
@@ -40,7 +40,7 @@ public class PlanConsumoController {
         PlanConsumo planconsumo = planconsumoRepository.mostrarPlanConsumoporId(id);
         if (planconsumo != null) {
             model.addAttribute("planconsumo", planconsumo);
-            return "planesconsumo/edit";
+            return "planesconsumoEditar";
         }
         return "redirect:/planesconsumo";
     }
@@ -51,7 +51,7 @@ public class PlanConsumoController {
         return "redirect:/planesconsumo";
     }
 
-    @PostMapping("/planesconsumo/{id}/delete")
+    @GetMapping("/planesconsumo/{id}/delete")
     public String planconsumoDelete(@PathVariable Integer id) {
         planconsumoRepository.eliminarPlanConsumo(id);
         return "redirect:/planesconsumo";

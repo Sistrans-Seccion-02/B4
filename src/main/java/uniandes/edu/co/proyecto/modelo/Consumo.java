@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.modelo;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,30 +18,31 @@ public class Consumo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
+    @Column (name = "descripcion")
     private String descripcion;
-
+    @Column (name = "costo")
     private Float costo;
-
+    @Column (name = "fecha")
     private Date fecha;
-
+    
     @ManyToOne
     @JoinColumn(name="idReserva", referencedColumnName = "id")
     private ReservaHabitacion idReserva;
 
-    public Consumo(Integer id, String descripcion, Float costo, Date fecha)
+    public Consumo(Integer id, String descripcion, Float costo, Date fecha, ReservaHabitacion idReserva)
     {
         this.id = id;
         this.descripcion = descripcion;
         this.costo = costo;
         this.fecha = fecha;
+        this.idReserva = idReserva;
     }
 
     public Consumo()
     {;}
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -48,7 +50,7 @@ public class Consumo {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
@@ -56,7 +58,7 @@ public class Consumo {
     }
 
     public Float getCosto() {
-        return costo;
+        return this.costo;
     }
 
     public void setCosto(Float costo) {
@@ -64,7 +66,7 @@ public class Consumo {
     }
 
     public Date getFecha() {
-        return fecha;
+        return this.fecha;
     }
 
     public void setFecha(Date fecha) {
@@ -72,7 +74,7 @@ public class Consumo {
     }
 
     public ReservaHabitacion getIdReserva() {
-        return idReserva;
+        return this.idReserva;
     }
 
     public void setIdReserva(ReservaHabitacion idReserva) {

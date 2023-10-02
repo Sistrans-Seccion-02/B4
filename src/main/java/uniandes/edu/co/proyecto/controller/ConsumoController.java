@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.Consumo;
 import uniandes.edu.co.proyecto.repositorio.ConsumoRepository;
@@ -20,10 +21,14 @@ public class ConsumoController {
     private ReservaHabitacionRepository reservaHabitacionRepository;
 
     @GetMapping("/consumos")
-    public String consumos(Model model, String Llegada, String fecha, String idReserva, String idUsuario)
+    public String consumos(Model model, Integer id)
     {
-        model.addAttribute("consumos", consumoRepository.mostrarConsumos());
-        model.addAttribute("reservasHabitacion", reservaHabitacionRepository.mostrarReservasHabitacion());
+        if(id != null && !id.equals("")){
+            model.addAttribute("consumos", consumoRepository.mostrarConsumoPorId(id));
+        }
+        else {
+            model.addAttribute("consumos", consumoRepository.mostrarConsumos());
+        }
         return "consumos";
     }
 
@@ -33,7 +38,7 @@ public class ConsumoController {
         return "consumoNuevo";
     }
 
-    @GetMapping("/consumos/new/save")
+    @PostMapping("/consumos/new/save")
     public String consumoSave(Consumo consumo){
         consumoRepository.insertarConsumo(consumo.getDescripcion(),consumo.getCosto(),consumo.getFecha(),consumo.getIdReserva().getId());
         return "redirect:/consumos";
@@ -53,9 +58,9 @@ public class ConsumoController {
         }
     }
 
-    @GetMapping("/consumos/{id}/edit/save")
+    @PostMapping("/consumos/{id}/edit/save")
     public String consumoEditarSave(@PathVariable Integer id, Consumo consumo){
-        consumoRepository.actualizarConsumo(id, consumo.getDescripcion(), consumo.getCosto(), consumo.getFecha());
+        consumoRepository.actualizarConsumo(id, consumo.getDescripcion(), consumo.getCosto(), consumo.getFecha(), consumo.getIdReserva().getId());
         return "redirect:/consumos";
     }
 

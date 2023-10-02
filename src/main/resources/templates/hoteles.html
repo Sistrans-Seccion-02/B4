@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Lista de Reservas por servicio</title>
+    <title>Lista de Hoteles</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
     <script th:src="@{/css/jquery.min.js}"></script>
     <script th:src="@{/css/bootstrap.min.js}"></script>
@@ -10,11 +9,11 @@
 
 <body>
     <div class="text-center">
-        <h1>Lista de reservas por servicio</h1>
+        <h1>Lista de Hoteles</h1>
 
 
         <br />
-        <form th:action="@{reservaservicios}" method="get">
+        <form th:action="@{hoteles}" method="get">
             <div class="input-group input-group-sm mb-2 justify-content-center">
                 <input class='w-25' id="txtSearch" type="text" name="id">
                 <div class="input-group-append">
@@ -27,24 +26,21 @@
         <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
             <thead class="thead-dark">
                 <tr>
-                    <th>Id</th>
-                    <th>Fecha Inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>Pago</th>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Ubicación</th>
                 </tr>
             </thead>
             <tbody>
-                <th:block th:each="reserva : ${reservaservicios}">
+                <th:block th:each="hotel : ${hoteles}">
                     <tr>
-                        
-                        <td th:text="${reserva.fechaInicio}"></td>
-                        <td th:text="${reserva.fechaFin}"></td>
-                        <td th:text="${reserva.pago}"></td>
-                        <td th:text="${reserva.id_servicio}"></td>
+                        <td th:text="${hotel.id}"></td>
+                        <td th:text="${hotel.nombre}"></td>
+                        <td th:text="${hotel.ubicacion}"></td>
                         <td>
-                            <a th:href="@{reservaservicios/{id}/edit(id=${reserva.id})}">Editar</a>
-                            <a th:href="@{reservaservicios/{id}/delete(id=${reserva.id})}"
-                                onclick="return confirm('¿Estás seguro de borrar esta reserva?')">Borrar</a>
+                            <a th:href="@{hoteles/{id}/edit(id=${hotel.id})}">Editar</a>
+                            <a th:href="@{hoteles/{id}/delete(id=${hotel.id})}"
+                                onclick="return confirm('¿Estás seguro de borrar este Hotel?')">Borrar</a>
                         </td>
                     </tr>
 
@@ -52,11 +48,10 @@
             </tbody>
         </table>
         <div class="text-center">
-            <a th:href='@{reservaservicios/new}' class="btn btn-primary">Añadir Reserva</a>
+            <a th:href='@{hoteles/new}' class="btn btn-primary">Añadir Hotel</a>
             <a th:href="@{/}" class="btn btn-primary"> Volver Atrás</a>
             </br>
         </div>
         <br />
 </body>
-
 </html>

@@ -26,13 +26,13 @@ public class HotelController {
     @GetMapping("/hoteles/new")
     public String hotelForm(Model model) {
         model.addAttribute("hotel", new Hotel());
-        return "hoteles/new";
+        return "hotelesNuevo";
     }
 
 
     @PostMapping("/hoteles/new/save")
     public String hotelSubmit(@ModelAttribute Hotel hotel) {
-        hotelRepository.insertarHotel(hotel.getNombre(), hotel.getUbicacion());
+        hotelRepository.insertarHotel(hotel.getId(), hotel.getNombre(), hotel.getUbicacion());
         return "redirect:/hoteles";
     }
 
@@ -41,7 +41,7 @@ public class HotelController {
         Hotel hotel = hotelRepository.mostrarHotelporId(id);
         if (hotel != null) {
             model.addAttribute("hotel", hotel);
-            return "hoteles/edit";
+            return "hotelesEditar";
         }
         return "redirect:/hoteles";
     }
@@ -52,7 +52,7 @@ public class HotelController {
         return "redirect:/hoteles";
     }
 
-    @PostMapping("/hoteles/{id}/delete")
+    @GetMapping("/hoteles/{id}/delete")
     public String hotelDelete(@PathVariable Integer id) {
         hotelRepository.eliminarHotel(id);
         return "redirect:/hoteles";
