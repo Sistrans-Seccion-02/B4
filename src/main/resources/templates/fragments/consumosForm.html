@@ -23,7 +23,7 @@
         <label class="col-form-label">Fecha:</label>
         <input class="form-control" type="date" id="pago" name="Fecha" required th:value="${consumo.fecha}" />
         <label class="col-form-label">Id Reserva:</label>
-        <input class="form-control" type="number" id="idReserva" name="idReserva" required th:value="${consumo.idReserva}" />
+        <input class="form-control" type="number" id="idReserva" name="idReserva" required th:value="${consumo.idReserva.id}" />
         <div class="text-center">
             <input type="submit" value="Guardar" class="btn btn-primary">
             <a th:href="@{/consumos}" class="btn btn-primary">Cancelar</a>
