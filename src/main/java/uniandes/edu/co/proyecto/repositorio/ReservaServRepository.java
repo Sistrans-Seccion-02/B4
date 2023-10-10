@@ -23,14 +23,14 @@ public interface ReservaServRepository extends JpaRepository<ReservaServ, Intege
     //insertar reserva
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO reservaservicios(fechaInicio, fechaFin, pago, id_servicio) VALUES (:fechaInicio, :fechaFin, :pago, :id_servicio)", nativeQuery = true)
-    void insertarReservaServicio(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, @Param("pago") Float pago, @Param("id_servicio") Integer id_servicio);
+    @Query(value = "INSERT INTO reservaservicios(id,fechaInicio, fechaFin, pago, servicios_id) VALUES (hoteles_sequence.nextval,:fechaInicio, :fechaFin, :pago, :servicios_id)", nativeQuery = true)
+    void insertarReservaServicio(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, @Param("pago") Float pago, @Param("servicios_id") Integer servicios_id);
 
     //actualizar reserva
     @Modifying
     @Transactional
-    @Query(value = "UPDATE reservaservicios SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago, id_servicio = :id_servicio WHERE id = :id", nativeQuery = true)
-    void actualizarReservaServicio(@Param("id") Integer id, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, @Param("pago") Float pago, @Param("id_servicio") Integer id_servicio);
+    @Query(value = "UPDATE reservaservicios SET fechaInicio = :fechaInicio, fechaFin = :fechaFin, pago = :pago, servicios_id = :servicios_id WHERE id = :id", nativeQuery = true)
+    void actualizarReservaServicio(@Param("id") Integer id, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, @Param("pago") Float pago, @Param("servicios_id") Integer servicios_id);
 
     //borrar reserva
     @Modifying

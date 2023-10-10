@@ -20,14 +20,14 @@ public class ReservaServ {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column (name = "fechaInicio")
+    @Column (name = "fechainicio")
     public Date fechaInicio;
-    @Column (name = "fechaFin")
+    @Column (name = "fechafin")
     public Date fechaFin;
     private Float pago;
 
     @ManyToOne
-    @JoinColumn(name="id_servicio", referencedColumnName = "id")
+    @JoinColumn(name="servicios_id", referencedColumnName = "id")
     public Servicio id_servicio;
 
     public ReservaServ(Integer id, Date fechaInicio, Date fechaFin, Float pago, Servicio id_servicio)

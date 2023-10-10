@@ -31,16 +31,17 @@
                     <th>Fecha Inicio</th>
                     <th>Fecha Fin</th>
                     <th>Pago</th>
+                    <th>Servicio</th>
                 </tr>
             </thead>
             <tbody>
                 <th:block th:each="reserva : ${reservaservicios}">
                     <tr>
-                        
+                        <td th:text="${reserva.id}"></td>
                         <td th:text="${reserva.fechaInicio}"></td>
                         <td th:text="${reserva.fechaFin}"></td>
                         <td th:text="${reserva.pago}"></td>
-                        <td th:text="${reserva.id_servicio}"></td>
+                        <td th:text="${reserva.id_servicio.nombre}"></td>
                         <td>
                             <a th:href="@{reservaservicios/{id}/edit(id=${reserva.id})}">Editar</a>
                             <a th:href="@{reservaservicios/{id}/delete(id=${reserva.id})}"

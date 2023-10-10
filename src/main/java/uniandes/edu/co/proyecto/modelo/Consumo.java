@@ -26,7 +26,7 @@ public class Consumo {
     private Date fecha;
     
     @ManyToOne
-    @JoinColumn(name="idReserva", referencedColumnName = "id")
+    @JoinColumn(name="reservahabitaciones_id", referencedColumnName = "id")
     private ReservaHabitacion idReserva;
 
     public Consumo(Integer id, String descripcion, Float costo, Date fecha, ReservaHabitacion idReserva)
