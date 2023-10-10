@@ -44,12 +44,12 @@
         <!--desplegable de los usuarios que son Administrador-->
         <label class="col-form-label" for="IdUsuario">Administrador:</label>
         <!--form para escribir cualquier id-->
-        <input class="form-control" type="text" id="IdUsuario" name="IdUsuario" required th:value="${ofertaHabitacion.IdUsuario.id}" />
+        <input class="form-control" type="text" id="IdUsuario" name="IdUsuario" required th:value="${ofertaHabitacion.IdUsuario}" />
         <!--IdHotel-->
         <!--desplegable de los hoteles-->
         <label class="col-form-label" for="IdHotel">Hotel:</label>
         <!--form para escribir cualquier id-->
-        <input class="form-control" type="text" id="IdHotel" name="IdHotel" required th:value="${ofertaHabitacion.IdHotel.id}" />
+        <input class="form-control" type="text" id="IdHotel" name="IdHotel" required th:value="${ofertaHabitacion.IdHotel}" />
 
         <div class="text-center">
             <input type="submit" value="Guardar" class="btn btn-primary">
