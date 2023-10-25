@@ -1,13 +1,4 @@
--- Generado por Oracle SQL Developer Data Modeler 23.1.0.087.0806
---   en:        2023-09-24 17:53:03 COT
---   sitio:      Oracle Database 11g
---   tipo:      Oracle Database 11g
-
-
-
--- predefined type, no DDL - MDSYS.SDO_GEOMETRY
-
--- predefined type, no DDL - XMLTYPE
+CREATE SEQUENCE HOTELES_SEQUENCE;
 
 CREATE TABLE "Check" (
     id                     INTEGER NOT NULL,
