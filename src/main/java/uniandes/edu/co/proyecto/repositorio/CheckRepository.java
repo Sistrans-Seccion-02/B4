@@ -41,7 +41,7 @@ public interface CheckRepository extends JpaRepository<Check, Integer> {
     //insertar check
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO \"Check\" (llegada, fecha, idReserva, idUsuario) VALUES (:llegada, :fecha, :idReserva, :idUsuario)", nativeQuery = true)
+    @Query(value = "INSERT INTO \"Check\" (id,llegada, fecha, reservahabitaciones_id, usuarios_id) VALUES (hoteles_sequence.nextval,:llegada, :fecha, :idReserva, :idUsuario)", nativeQuery = true)
     void insertarCheck(@Param("llegada") Boolean llegada, @Param("fecha") Date fecha, 
     @Param("idReserva") Integer idReserva, @Param("idUsuario") Integer idUsuario);
 

@@ -29,7 +29,7 @@ public class Check {
 
     @ManyToOne
     @JoinColumn(name="reservahabitaciones_id", referencedColumnName = "id")
-    private ReservaHabitacion reservahabitaciones_id;
+    public ReservaHabitacion reservahabitaciones_id;
 
     @ManyToOne
     @JoinColumn(name="usuarios_id", referencedColumnName = "id")

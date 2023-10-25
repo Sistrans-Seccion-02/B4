@@ -40,8 +40,8 @@
                         <td th:text="${check.id}"></td>
                         <td th:text="${check.llegada}"></td>
                         <td th:text="${check.fecha}"></td>
-                        <td th:text="${check.idUsuario}"></td>
-                        <td th:text="${check.reservahabitaciones_id}"></td>
+                        <td th:text="${check.idUsuario.nombre}"></td>
+                        <td th:text="${check.reservahabitaciones_id.id}"></td>
                         <td>
                             <a th:href="@{checks/{id}/edit(id=${check.id})}">Editar</a>
                             <a th:href="@{checks/{id}/delete(id=${check.id})}"

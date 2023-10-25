@@ -43,9 +43,9 @@
                         <td th:text="${reserva.fechaInicio}"></td>
                         <td th:text="${reserva.fechaFin}"></td>
                         <td th:text="${reserva.pago}"></td>
-                        <td th:text="${reserva.planConsumo}"></td>
-                        <td th:text="${reserva.idHabitacion}"></td>
-                        <td th:text="${reserva.idUsuario}"></td>
+                        <td th:text="${reserva.planesconsumo_id}"></td>
+                        <td th:text="${reserva.id}"></td>
+                        <td th:text="${reserva.id}"></td>
                         <td>
                             <a th:href="@{reservasHabitacion/{id}/edit(id=${reserva.id})}">Editar</a>
                             <a th:href="@{reservasHabitacion/{id}/delete(id=${reserva.id})}"

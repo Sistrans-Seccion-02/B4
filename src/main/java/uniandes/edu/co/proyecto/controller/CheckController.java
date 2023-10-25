@@ -3,7 +3,9 @@ package uniandes.edu.co.proyecto.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 
 
@@ -31,10 +33,13 @@ public class CheckController {
     //idReserva
     //idUsuario
     @GetMapping("/checks")
-    public String checks(Model model, String llegada, String fecha, String idReserva, String idUsuario) {
-        model.addAttribute("checks", checkRepository.mostrarChecks());
-        model.addAttribute("reservasHabitacion", reservaHabitacionRepository.mostrarReservasHabitacion());
-        model.addAttribute("usuarios", usuarioRepository.mostrarUsuarios());
+    public String checks(Model model,Integer id) {
+        if(id != null && !id.equals("")){
+            model.addAttribute("checks", checkRepository.mostrarCheckPorId(id));
+        }
+        else{
+            model.addAttribute("checks", checkRepository.mostrarChecks());
+        }
         return "checks";
   
     }
@@ -62,12 +67,12 @@ public class CheckController {
         model.addAttribute("check", new Check());
         model.addAttribute("reservas", reservaHabitacionRepository.mostrarReservasHabitacion());
         model.addAttribute("usuarios", usuarioRepository.mostrarUsuarios());
-        return "checkNuevo";
+        return "checksNuevo";
     }
 
-    @GetMapping("/checks/new/save")
-    public String checkSave(Check check) {
-        checkRepository.insertarCheck(check.getLlegada(), check.getFecha(), check.getIdReserva().getId(), check.getIdUsuario().getId());
+    @PostMapping("/checks/new/save")
+    public String checkSave(@ModelAttribute Check check) {
+        checkRepository.insertarCheck(check.getLlegada(), check.getFecha(),check.getIdReserva().getId(), check.getIdUsuario().getId());
         return "redirect:/checks";
     }
 
@@ -79,7 +84,7 @@ public class CheckController {
             model.addAttribute("check", check);
             model.addAttribute("reservas", reservaHabitacionRepository.mostrarReservasHabitacion());
             model.addAttribute("usuarios", usuarioRepository.mostrarUsuarios());
-            return "checkEditar";
+            return "checksEditar";
         } 
         else 
         {

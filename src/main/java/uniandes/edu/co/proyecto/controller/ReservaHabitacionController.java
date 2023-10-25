@@ -33,8 +33,12 @@ public class ReservaHabitacionController {
 
     //mostrar todas las reservas de habitacion
     @GetMapping("/reservasHabitacion")
-    public String reservasHabitacion(Model model) {
-        model.addAttribute("reservasHabitacion", reservaHabitacionRepository.mostrarReservasHabitacion());
+    public String reservasHabitacion(Model model,Integer id) {
+        if (id != null && !id.equals("")) {
+            model.addAttribute("reservasHabitacion", reservaHabitacionRepository.mostrarReservaHabitacionPorId(id));
+        } else {
+            model.addAttribute("reservasHabitacion", reservaHabitacionRepository.mostrarReservasHabitacion());
+        }
         return "reservasHabitacion";
     }
 
