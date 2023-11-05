@@ -30,13 +30,18 @@ public class ReservaServ {
     @JoinColumn(name="servicios_id", referencedColumnName = "id")
     public Servicio id_servicio;
 
-    public ReservaServ(Integer id, Date fechaInicio, Date fechaFin, Float pago, Servicio id_servicio)
+    @ManyToOne
+    @JoinColumn(name="habitacion_id", referencedColumnName = "id")
+    public OfertaHabitacion habitacion_id;
+
+    public ReservaServ(Integer id, Date fechaInicio, Date fechaFin, Float pago, Servicio id_servicio, OfertaHabitacion id_habitacion)
     {
         this.id = id;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.pago = pago;
         this.id_servicio = id_servicio;
+        this.habitacion_id = id_habitacion;
     }
     public ReservaServ()
     {;}
@@ -69,6 +74,12 @@ public class ReservaServ {
     }
     public void setid_servicio(Servicio id_servicio) {
         this.id_servicio = id_servicio;
+    }
+    public OfertaHabitacion getHabitacion_id() {
+        return habitacion_id;
+    }
+    public void setHabitacion_id(OfertaHabitacion habitacion_id) {
+        this.habitacion_id = habitacion_id;
     }
 
     

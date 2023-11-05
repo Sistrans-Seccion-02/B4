@@ -45,7 +45,8 @@ public class ReservaServController {
         reservaServRepository.insertarReservaServicio(reservaServ.getfechaInicio(),
         reservaServ.getfechaFin(), 
         reservaServ.getPago(), 
-        reservaServ.getid_servicio().getId());
+        reservaServ.getid_servicio().getId(),
+        reservaServ.getHabitacion_id().getId());
         return "redirect:/reservaservicios";
     }
 
@@ -71,6 +72,12 @@ public class ReservaServController {
     public String reservaserviciosDelete(@PathVariable Integer id){
         reservaServRepository.eliminarReservaServicio(id);
         return "redirect:/reservaservicios";
+    }
+
+    @GetMapping("/reservaservicios/habitaciones")
+    public String reservaserviciosHabitaciones(Model model){
+        model.addAttribute("reservaservicios",  reservaServRepository.mostrarReservasHabitacion());
+        return "reservaserviciosHabitaciones";
     }
     
 }

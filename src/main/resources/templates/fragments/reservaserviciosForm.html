@@ -22,6 +22,8 @@
         <input class="form-control" type="text" id="pago" name="pago" required th:value="${reservaservicios.pago}" />
         <label class="col-form-label">Id Servicio:</label>
         <input class="form-control" type="number" id="id_servicio" name="id_servicio" required th:value="${reservaservicios.id_servicio}" />
+        <label class="col-form-label">Id Habitación:</label>   
+        <input class="form-control" type="number" id="habitacion_id" name="habitacion_id" required th:value="${reservaservicios.habitacion_id}" />
         <div class="text-center">
             <input type="submit" value="Guardar" class="btn btn-primary">
             <a th:href="@{/reservaservicios}" class="btn btn-primary">Cancelar</a>
