@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.repositorio;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -45,5 +46,19 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Transactional
     @Query(value = "DELETE FROM USUARIOS WHERE id = :id", nativeQuery = true)
     void eliminarUsuario(@Param("id") Integer id);
+
+    //encontrar buenos clientes
+    @Query(value = "SELECT u.id AS usuario_id, " +
+    "u.nombre AS nombre_usuario, " +
+    "u.apellido AS apellido_usuario, " +
+    "SUM(CASE WHEN r.fechafin >= SYSDATE - 365 THEN r.pago ELSE 0 END) AS total_pagos_ultimo_anio, " +
+    "SUM(CASE WHEN o.fechainicio >= SYSDATE - 365 THEN (o.fechafin - o.fechainicio) ELSE 0 END) AS total_dias_estadia_ultimo_anio " +
+    "FROM usuarios u " +
+    "LEFT JOIN reservahabitaciones r ON u.id = r.usuarios_id " +
+    "LEFT JOIN ofertashabitaciones o ON r.ofertashabitaciones_id = o.id " +
+    "GROUP BY u.id, u.nombre, u.apellido " +
+    "HAVING SUM(CASE WHEN r.fechafin >= SYSDATE - 365 THEN r.pago ELSE 0 END) > 15000000 " +
+    "OR SUM(CASE WHEN o.fechainicio >= SYSDATE - 365 THEN (o.fechafin - o.fechainicio) ELSE 0 END) >= 14", nativeQuery = true)
+    List<Object[]> obtenerBuenosClientes();
     
 }

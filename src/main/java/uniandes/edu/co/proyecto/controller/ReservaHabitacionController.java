@@ -89,6 +89,8 @@ public class ReservaHabitacionController {
     @GetMapping("/reservasHabitacion/ocupacion")
     public String reservaHabitacionOcupacion(Model model) {
         model.addAttribute("ocupaciones", reservaHabitacionRepository.mostrarMayorOcupacion());
+        model.addAttribute("desocupaciones", reservaHabitacionRepository.mostrarMenorOcupacion());
+        model.addAttribute("consumos", reservaHabitacionRepository.mostrarMayorConsumo());
         return "reservasHabitacionOcupacion";
     }
     

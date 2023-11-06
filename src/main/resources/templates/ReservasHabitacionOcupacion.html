@@ -13,6 +13,8 @@
         <h1>Ocupación de Reservas de Habitaciones</h1>
         <br />
 
+        <!-- Tabla para ocupaciones -->
+        <h2>Mayor Ocupacion</h2>
         <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
             <thead class="thead-dark">
                 <tr>
@@ -25,6 +27,44 @@
                     <tr>
                         <td th:text="${ocupacion[0]}"></td>
                         <td th:text="${ocupacion[1]}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+
+        <!-- Tabla para desocupaciones -->
+        <h2>Menor Ocupacion</h2>
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha de Inicio</th>
+                    <th>Ocupacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="desocupacion : ${desocupaciones}">
+                    <tr>
+                        <td th:text="${desocupacion[0]}"></td>
+                        <td th:text="${desocupacion[1]}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+
+        <!-- Tabla para mayores consumos -->
+        <h2>Mayores Consumos</h2>
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha de Inicio</th>
+                    <th>Mayor Consumo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="consumo : ${consumos}">
+                    <tr>
+                        <td th:text="${consumo[0]}"></td>
+                        <td th:text="${consumo[1]}"></td>
                     </tr>
                 </th:block>
             </tbody>

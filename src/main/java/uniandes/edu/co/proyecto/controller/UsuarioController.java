@@ -67,5 +67,12 @@ public class UsuarioController {
         usuarioRepository.eliminarUsuario(id);
         return "redirect:/usuarios";
     }
+
+    //encontrar buenos clientes
+    @GetMapping("/usuarios/buenosClientes")
+    public String buenosClientes(Model model) {
+        model.addAttribute("buenosClientes", usuarioRepository.obtenerBuenosClientes());
+        return "usuariosBuenosClientes";
+    }
     
 }

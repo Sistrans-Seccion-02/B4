@@ -60,5 +60,21 @@ public interface ReservaHabitacionRepository extends JpaRepository<ReservaHabita
     "GROUP BY fechainicio " +
     "ORDER BY COUNT(*) DESC", nativeQuery = true)
     List<Object[]> mostrarMayorOcupacion();
+
+    //mostrar fechas con menor ocupacion
+    @Query(value = "SELECT fechainicio, COUNT(*) " +
+    "FROM reservahabitaciones " +
+    "GROUP BY fechainicio " +
+    "ORDER BY COUNT(*) ASC", nativeQuery = true)
+    List<Object[]> mostrarMenorOcupacion();
+
+    //mostrar fechas con mayores consumos
+    @Query(value = "SELECT fecha, SUM(costo) " +
+        "FROM consumos " +
+        "GROUP BY fecha " +
+        "ORDER BY SUM(costo) DESC", nativeQuery = true)
+        List<Object[]> mostrarMayorConsumo();
+
+    
     
 }

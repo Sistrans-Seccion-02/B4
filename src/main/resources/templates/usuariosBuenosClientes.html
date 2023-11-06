@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Buenos Clientes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <script th:src="@{/css/jquery.min.js}"></script>
+    <script th:src="@{/css/bootstrap.min.js}"></script>
+</head>
+<body>
+    <div class="text-center">
+        <h1>Lista de Buenos Clientes</h1>
+        <br />
+
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse: collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Usuario ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Total Pagos Último Año</th>
+                    <th>Total Días Estadia Último Año</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="cliente : ${buenosClientes}">
+                    <tr>
+                        <td th:text="${cliente[0]}"></td>
+                        <td th:text="${cliente[1]}"></td>
+                        <td th:text="${cliente[2]}"></td>
+                        <td th:text="${cliente[3]}"></td>
+                        <td th:text="${cliente[4]}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+        </div>
+        <br />
+    </div>
+</body>
+</html>
