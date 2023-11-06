@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.repositorio;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -39,4 +40,13 @@ public interface ServicioRepository extends JpaRepository<Servicio, Integer> {
      @Transactional
      @Query(value = "DELETE FROM servicios WHERE id = :id", nativeQuery = true)
      void eliminarServicio(@Param("id") Integer id);
+
+     //servicios con no mucha demanda
+     @Query(value = "SELECT s.id, s.nombre, COUNT(rs.id) AS veces_solicitado " +
+    "FROM servicios s " +
+    "LEFT JOIN reservaservicios rs ON s.id = rs.servicios_id " +
+    "WHERE rs.fechainicio >= (SYSDATE - 365) " +
+    "GROUP BY s.id, s.nombre " +
+    "HAVING COUNT(rs.id) < 3", nativeQuery = true)
+     List<Object[]> obtenerServiciosMenosSolicitados();
 }

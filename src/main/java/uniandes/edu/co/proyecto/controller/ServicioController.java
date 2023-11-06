@@ -56,4 +56,11 @@ public class ServicioController {
         servicioRepository.eliminarServicio(id);
         return "redirect:/servicios";
     }
+
+    //servicios con no mucha demanda
+    @GetMapping("/servicios/menosSolicitados")
+    public String serviciosMenosSolicitados(Model model) {
+        model.addAttribute("servicios", servicioRepository.obtenerServiciosMenosSolicitados());
+        return "serviciosMenosSolicitados";
+    }
 }
