@@ -92,9 +92,6 @@ public class ReservaServController {
     
     @GetMapping("reservaservicios/fechas")
     public String reservaserviciosPopularesInsertarFecha(@ModelAttribute fechas fechas, Model model){ 
-        System.out.println("*****************************************") ;  
-        System.out.println(model.addAttribute("reservaservicios", reservaServRepository.mostrarServiciosPopulares(fechas.getFecha2(), fechas.getFecha1() )));
-        System.out.println("*****************************************") ; 
         model.addAttribute("reservaservicios", reservaServRepository.mostrarServiciosPopulares(fechas.getFecha2(), fechas.getFecha1() ));
         return "reservaServiciosPopulares";
     }

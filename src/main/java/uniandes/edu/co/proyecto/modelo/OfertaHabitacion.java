@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import uniandes.edu.co.proyecto.controller.OfertaHabitacionController;
 
 @Entity
 @Table(name = "OFERTASHABITACIONES")
@@ -24,7 +25,7 @@ public class OfertaHabitacion {
     //idHotel
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    public Integer id;
 
     private Integer capacidad;
 
@@ -47,10 +48,14 @@ public class OfertaHabitacion {
     @JoinColumn(name="hoteles_id", referencedColumnName = "id")
     private Hotel id_hotel;
 
+    public Double existe;
+
+    public Integer habitacion_id;
+
     public OfertaHabitacion() 
     {;}
 
-    public OfertaHabitacion(Integer capacidad, Date fechaInicio, Date fechaFin, float costo, String tipoHabitacion,Usuario id_usuario ,Hotel id_hotel) {
+    public OfertaHabitacion(Integer capacidad, Date fechaInicio, Date fechaFin, Float costo, String tipoHabitacion,Usuario id_usuario ,Hotel id_hotel, Integer habitacion_id) {
         this.capacidad = capacidad;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -58,6 +63,8 @@ public class OfertaHabitacion {
         this.tipoHabitacion = tipoHabitacion;
         this.id_usuario = id_usuario;
         this.id_hotel = id_hotel;
+        this.habitacion_id = habitacion_id;
+        this.existe = 1.0;
     }
 
     //getters
@@ -125,6 +132,22 @@ public class OfertaHabitacion {
 
     public void setIdHotel(Hotel idHotel) {
         this.id_hotel=idHotel;
+    }
+
+    public Double getExiste() {
+        return this.existe;
+    }
+
+    public void setExiste(Double existe) {
+        this.existe = existe;
+    }
+
+    public Integer getHabitacion_id() {
+        return this.habitacion_id;
+    }
+
+    public void setHabitacion_id(Integer habitacion_id) {
+        this.habitacion_id = habitacion_id;
     }
 
     

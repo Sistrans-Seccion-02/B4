@@ -14,6 +14,9 @@
         <h1 class="text-center" th:text="${titulo}"></h1>
     
     <form>
+        <!--Id habitación-->
+        <label class="col-form-label" for="habitacion_id">Id habitación:</label>
+        <input class="form-control" type="text" id="habitacion_id" name="habitacion_id" required th:value="${ofertaHabitacion.habitacion_id}" />
         <!--capacidad-->
         <label class="col-form-label">Capacidad:</label>
         <input class="form-control" type="text" id="capacidad" name="capacidad" required th:value="${ofertaHabitacion.capacidad}" />

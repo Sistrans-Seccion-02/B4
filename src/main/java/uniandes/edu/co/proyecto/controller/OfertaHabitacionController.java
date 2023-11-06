@@ -50,7 +50,7 @@ public class OfertaHabitacionController {
     public String ofertaHabitacionSubmit(@ModelAttribute OfertaHabitacion ofertaHabitacion) {
         ofertaHabitacionRepository.insertarOfertaHabitacion(ofertaHabitacion.getCapacidad(), 
         ofertaHabitacion.getFechaInicio(), ofertaHabitacion.getFechaFin(), 
-        ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(),ofertaHabitacion.getIdUsuario().getId() ,ofertaHabitacion.getIdHotel().getId());
+        ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(),ofertaHabitacion.getIdUsuario().getId() ,ofertaHabitacion.getIdHotel().getId(), ofertaHabitacion.getHabitacion_id());
         return "redirect:/ofertasHabitacion";
     }
 
@@ -67,7 +67,7 @@ public class OfertaHabitacionController {
 
     @PostMapping("/ofertasHabitacion/{id}/edit/save")
     public String ofertaHabitacionEditSubmit(@ModelAttribute OfertaHabitacion ofertaHabitacion, @ModelAttribute("id")int id) {
-        ofertaHabitacionRepository.actualizarOfertaHabitacion(id, ofertaHabitacion.getCapacidad(), ofertaHabitacion.getFechaInicio(), ofertaHabitacion.getFechaFin(), ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(),ofertaHabitacion.getIdUsuario().getId() ,ofertaHabitacion.getIdHotel().getId());
+        ofertaHabitacionRepository.actualizarOfertaHabitacion(id, ofertaHabitacion.getCapacidad(), ofertaHabitacion.getFechaInicio(), ofertaHabitacion.getFechaFin(), ofertaHabitacion.getCosto(), ofertaHabitacion.getTipoHabitacion(),ofertaHabitacion.getIdUsuario().getId() ,ofertaHabitacion.getIdHotel().getId(), ofertaHabitacion.getHabitacion_id());
         return "redirect:/ofertasHabitacion";
     }
 
@@ -77,5 +77,14 @@ public class OfertaHabitacionController {
         return "redirect:/ofertasHabitacion";
     }
 
+    @GetMapping("/ofertasHabitacion/porcentaje")
+    public String ofertaHabitacion(Model model){
+        model.addAttribute("habitaciones", ofertaHabitacionRepository.mostrarPorcentajeOcupacion());
+        return "ofertasHabitacionesPorcentaje";
+    }
+
+    public void cambiarExiste(Integer id, Double nuevoExiste){
+        ofertaHabitacionRepository.cambiarExiste(id, nuevoExiste);
+    }
     
 }
