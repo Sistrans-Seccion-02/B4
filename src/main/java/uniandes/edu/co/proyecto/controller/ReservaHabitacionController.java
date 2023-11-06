@@ -1,5 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -82,6 +84,12 @@ public class ReservaHabitacionController {
     public String reservaHabitacionDelete(@ModelAttribute("id")int id) {
         reservaHabitacionRepository.eliminarReservaHabitacion(id);
         return "redirect:/reservasHabitacion";
+    }
+
+    @GetMapping("/reservasHabitacion/ocupacion")
+    public String reservaHabitacionOcupacion(Model model) {
+        model.addAttribute("ocupaciones", reservaHabitacionRepository.mostrarMayorOcupacion());
+        return "reservasHabitacionOcupacion";
     }
     
     

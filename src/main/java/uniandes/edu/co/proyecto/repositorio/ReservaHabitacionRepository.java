@@ -2,12 +2,14 @@ package uniandes.edu.co.proyecto.repositorio;
 
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import uniandes.edu.co.proyecto.modelo.ReservaHabitacion;
 
@@ -51,5 +53,12 @@ public interface ReservaHabitacionRepository extends JpaRepository<ReservaHabita
     @Transactional
     @Query(value = "DELETE FROM reservahabitaciones WHERE id = :id", nativeQuery = true)
     void eliminarReservaHabitacion(@Param("id") Integer id);
+
+    //mostrar fechas con mayor ocupacion
+    @Query(value = "SELECT fechainicio, COUNT(*) " +
+    "FROM reservahabitaciones " +
+    "GROUP BY fechainicio " +
+    "ORDER BY COUNT(*) DESC", nativeQuery = true)
+    List<Object[]> mostrarMayorOcupacion();
     
 }

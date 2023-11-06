@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.repositorio;
 import java.sql.Date;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -8,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import uniandes.edu.co.proyecto.interfaces.req3;
+
 import uniandes.edu.co.proyecto.modelo.OfertaHabitacion;
 
 public interface OfertaHabitacionRepository extends JpaRepository<OfertaHabitacion, Integer> {
@@ -54,7 +55,7 @@ public interface OfertaHabitacionRepository extends JpaRepository<OfertaHabitaci
     //mostrar porcentaje ocupacion
     @Query(value= "SELECT habitacion_id, sum(existe) as existe FROM ofertashabitaciones WHERE fechafin >= ADD_MONTHS(TRUNC(SYSDATE),-12) AND fechafin < TRUNC(SYSDATE) GROUP BY habitacion_id"
     , nativeQuery = true)
-    Collection<req3> mostrarPorcentajeOcupacion();
+    List<Object[]> mostrarPorcentajeOcupacion();
 
 
     @Query(value ="UPDATE ofertashabitaciones SET existe = :nuevoExiste WHERE id = :id" , nativeQuery = true)
