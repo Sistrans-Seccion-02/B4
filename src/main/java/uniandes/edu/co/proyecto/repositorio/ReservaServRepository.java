@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.interfaces.req1;
+import uniandes.edu.co.proyecto.interfaces.req2;
 import uniandes.edu.co.proyecto.modelo.ReservaServ;
 
 public interface ReservaServRepository extends JpaRepository<ReservaServ, Integer> {
@@ -26,8 +27,8 @@ public interface ReservaServRepository extends JpaRepository<ReservaServ, Intege
     //insertar reserva
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO reservaservicios(id,fechaInicio, fechaFin, pago, servicios_id, habitacion_id) VALUES (hoteles_sequence.nextval,:fechaInicio, :fechaFin, :pago, :servicios_id, :habitacion_id)", nativeQuery = true)
-    void insertarReservaServicio(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, @Param("pago") Float pago, @Param("servicios_id") Integer servicios_id, @Param("habitacion_id") Integer habitacion_id);
+    @Query(value = "INSERT INTO reservaservicios(id,fechaInicio, fechaFin, pago, servicios_id, habitacion_id, nombre_servicio, existe) VALUES (hoteles_sequence.nextval,:fechaInicio, :fechaFin, :pago, :servicios_id, :habitacion_id, :nombre_servicio, 1)", nativeQuery = true)
+    void insertarReservaServicio(@Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin, @Param("pago") Float pago, @Param("servicios_id") Integer servicios_id, @Param("habitacion_id") Integer habitacion_id, @Param("nombre_servicio") String nombre_servicio);
 
     //actualizar reserva
     @Modifying
@@ -45,5 +46,10 @@ public interface ReservaServRepository extends JpaRepository<ReservaServ, Intege
     @Query(value= "SELECT * FROM reservaservicios"
     , nativeQuery= true)
     Collection<ReservaServ> mostrarReservasServicios();
+
+    //mostrar servicios populares
+    @Query(value="SELECT nombre_servicio, sum(existe) as existe FROM reservaservicios WHERE fechafin <= :fecha2 AND fechafin >= :fecha1 GROUP BY nombre_servicio ORDER BY existe DESC",
+    nativeQuery = true)
+    Collection<req2> mostrarServiciosPopulares( @Param("fecha2") Date fecha2,  @Param("fecha1") Date fecha1);
 }
 

@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.controller;
 
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.ReservaServ;
+import uniandes.edu.co.proyecto.nuevasClases.fechas;
 import uniandes.edu.co.proyecto.repositorio.ReservaServRepository;
 import uniandes.edu.co.proyecto.repositorio.ServicioRepository;
 
@@ -46,7 +49,8 @@ public class ReservaServController {
         reservaServ.getfechaFin(), 
         reservaServ.getPago(), 
         reservaServ.getid_servicio().getId(),
-        reservaServ.getHabitacion_id().getId());
+        reservaServ.getHabitacion_id().getId(),
+        reservaServ.getid_servicio().getNombre());
         return "redirect:/reservaservicios";
     }
 
@@ -79,5 +83,21 @@ public class ReservaServController {
         model.addAttribute("reservaservicios",  reservaServRepository.mostrarReservasHabitacion());
         return "reservaserviciosHabitaciones";
     }
+
+    @GetMapping("/reservaservicios/populares")
+    public String reservaserviciosPopulares(Model model){
+        model.addAttribute("fechas", new fechas());
+        return "reservaServiciosPopularesNuevo";
+    }
     
+    @GetMapping("reservaservicios/fechas")
+    public String reservaserviciosPopularesInsertarFecha(@ModelAttribute fechas fechas, Model model){ 
+        System.out.println("*****************************************") ;  
+        System.out.println(model.addAttribute("reservaservicios", reservaServRepository.mostrarServiciosPopulares(fechas.getFecha2(), fechas.getFecha1() )));
+        System.out.println("*****************************************") ; 
+        model.addAttribute("reservaservicios", reservaServRepository.mostrarServiciosPopulares(fechas.getFecha2(), fechas.getFecha1() ));
+        return "reservaServiciosPopulares";
+    }
+
+
 }

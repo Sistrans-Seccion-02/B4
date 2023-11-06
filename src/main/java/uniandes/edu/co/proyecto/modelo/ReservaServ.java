@@ -34,6 +34,10 @@ public class ReservaServ {
     @JoinColumn(name="habitacion_id", referencedColumnName = "id")
     public OfertaHabitacion habitacion_id;
 
+    public String nombre_servicio;
+
+    public Integer existe;
+
     public ReservaServ(Integer id, Date fechaInicio, Date fechaFin, Float pago, Servicio id_servicio, OfertaHabitacion id_habitacion)
     {
         this.id = id;
@@ -42,6 +46,8 @@ public class ReservaServ {
         this.pago = pago;
         this.id_servicio = id_servicio;
         this.habitacion_id = id_habitacion;
+        this.nombre_servicio = id_servicio.getNombre();
+        this.existe = 1;
     }
     public ReservaServ()
     {;}
@@ -81,6 +87,20 @@ public class ReservaServ {
     public void setHabitacion_id(OfertaHabitacion habitacion_id) {
         this.habitacion_id = habitacion_id;
     }
+    public String getNombre_servicio() {
+        return this.nombre_servicio;
+    }
+    public void setNombre_servicio(String nombre_servicio) {
+        this.nombre_servicio = nombre_servicio;
+    }
+    public Integer getExiste() {
+        return this.existe;
+    }
+    public void setExiste(Integer existe) {
+        this.existe = existe;
+    }
+
+    
 
     
 }
