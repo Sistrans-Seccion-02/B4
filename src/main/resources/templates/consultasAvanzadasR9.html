@@ -14,6 +14,12 @@
 
         <br>
         <br>
+        <br>
+        <a th:href="@{'R9/mod1/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por fecha</a>
+        <a th:href="@{'R9/mod2/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por id del cliente</a>
+        <a th:href="@{'R9/mod3/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por nombre del cliente</a>
+        <a th:href="@{'R9/mod4/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por nombre del servicio</a>
+        <br>
         
 
         <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
@@ -43,10 +49,7 @@
        
         <br />
 
-        <a th:href="@{'R9/mod1/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por fecha</a>
-        <a th:href="@{'R9/mod2/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por id del cliente</a>
-        <a th:href="@{'R9/mod3/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por nombre del cliente</a>
-        <a th:href="@{'R9/mod4/'+${fecha1}+'/'+${fecha2}}" class="btn btn-primary">Ordenar por nombre del servicio</a>
+        
 </body>
 
 </html>
