@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.Consumo;
+import uniandes.edu.co.proyecto.nuevasClases.fechas;
+import uniandes.edu.co.proyecto.nuevasClases.fechas2;
 import uniandes.edu.co.proyecto.repositorio.ConsumoRepository;
 import uniandes.edu.co.proyecto.repositorio.ReservaHabitacionRepository;
 
@@ -68,5 +71,19 @@ public class ConsumoController {
     public String consumoDelete(@PathVariable Integer id){
         consumoRepository.eliminarConsumo(id);
         return "redirect:/consumos";
+    }
+
+    @GetMapping("/consumos/fechas")
+    public String consumosFechasId(@ModelAttribute fechas2 fechas, Model model){ 
+        System.out.println(fechas.getId() +" "+fechas.getFecha1()+" "+ fechas.getFecha2());
+        model.addAttribute("consumos", consumoRepository.mostrarConsumosFechasUsuario(fechas.getId() , fechas.getFecha1(), fechas.getFecha2() ));
+        System.out.println(consumoRepository.mostrarConsumosFechasUsuario(fechas.getId() , fechas.getFecha1(), fechas.getFecha2() ));
+        return "consumosFechasId";
+    }
+
+    @GetMapping("/consumos/fechasId")
+    public String reservaserviciosPopulares(Model model){
+        model.addAttribute("fechas2", new fechas2());
+        return "consumosFechasIdNuevo";
     }
 }
