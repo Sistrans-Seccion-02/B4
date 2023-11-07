@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fragmento</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+
+</head>
+<body>
+
+</br>
+<div th:fragment="consultasAvanzadasR9FechasIdForm(titulo)" class="container border border-2 w-25">
+    <h2 class="text-center" th:text="${titulo}"></h2>
+
+<form>
+    <label class="col-form-label">Id servicio:</label>
+    <input class="form-control" type="number" id="id" name="id" required th:value="${fechas.id}" />
+    <label class="col-form-label">Fecha Inicio:</label>
+    <input class="form-control" type="date" id="fecha1" name="fecha1" required th:value="${fechas.fecha1}" />
+    <label class="col-form-label">Fecha Fin:</label>
+    <input class="form-control" type="date" id="fecha2" name="fecha2" required th:value="${fechas.fecha2}" />
+
+    <div class="text-center">
+        <input type="submit" value="Buscar" class="btn btn-primary">
+        <a th:href="@{/reservaservicios}" class="btn btn-primary">Cancelar</a>
+    </div>
+</form>
+
+</br>
+</div>
+
+</body>
+
+</html>

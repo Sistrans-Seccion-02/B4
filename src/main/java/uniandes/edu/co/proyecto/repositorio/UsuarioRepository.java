@@ -27,6 +27,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query(value = "SELECT * FROM USUARIOS WHERE id = :id", nativeQuery = true)
     Usuario mostrarUsuarioPorId(@Param("id") Integer id);
 
+
+    //mostrar rol de usuario por id
+     @Query(value = "SELECT rol FROM USUARIOS WHERE id = :id", nativeQuery = true)
+     String mostrarRolUsuarioPorId(@Param("id") Integer id);
+
     //insertar usuario
     @Modifying
     @Transactional
