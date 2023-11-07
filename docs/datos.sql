@@ -5,9 +5,6 @@ INSERT INTO usuarios (id, nombre, apellido, correo, rol) VALUES (3, 'Carlos', 'L
 INSERT INTO hoteles (id, nombre, ubicacion) VALUES (1, 'Hotel A', 'Ciudad A');
 INSERT INTO hoteles (id, nombre, ubicacion) VALUES(2, 'Hotel B', 'Ciudad B');
 
-INSERT INTO ofertashabitaciones (id, capacidad, fechainicio, fechafin, costo, tipohabitacion, usuarios_id, hoteles_id) VALUES(1, 2, TO_DATE('2023-10-01', 'YYYY-MM-DD'), TO_DATE('2023-10-10', 'YYYY-MM-DD'), 100.00, 'Doble', 1, 1);
-INSERT INTO ofertashabitaciones (id, capacidad, fechainicio, fechafin, costo, tipohabitacion, usuarios_id, hoteles_id) VALUES(2, 1, TO_DATE('2023-10-05', 'YYYY-MM-DD'), TO_DATE('2023-10-12', 'YYYY-MM-DD'), 80.00, 'Individual', 2, 2);
-
 
 INSERT INTO planesconsumo (id, nombre, descuento) VALUES (1, 'Plan A', 10);
 INSERT INTO planesconsumo (id, nombre, descuento) VALUES(2, 'Plan B', 15);
