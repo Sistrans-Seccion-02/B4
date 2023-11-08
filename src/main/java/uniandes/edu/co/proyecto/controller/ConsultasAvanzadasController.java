@@ -135,7 +135,7 @@ public class ConsultasAvanzadasController {
          model.addAttribute("servicioMenosConsumido", consultasRepository.findServicioMenosConsumidoPorSemana());
          model.addAttribute("habitacionMasSolicitada", consultasRepository.findHabitacionMasSolicitadaPorSemana());
          model.addAttribute("habitacionMenosSolicitada", consultasRepository.findHabitacionMenosSolicitadaPorSemana());
-         return "ConsultasAvanzadasR11";
+         return "consultasAvanzadasR11";
      }
 
 

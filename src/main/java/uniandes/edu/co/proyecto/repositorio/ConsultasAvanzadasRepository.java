@@ -102,43 +102,52 @@ public interface ConsultasAvanzadasRepository extends JpaRepository<ReservaServ,
 
 
     //req 11 Servicio más consumido por semana:
-    @Query(value = "SELECT\r\n" + //
-                    "    TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
-                    "    s.nombre AS servicio_mas_consumido,\r\n" + //
-                    "    COUNT(*) AS cantidad_consumos\r\n" + //
+    @Query(value = "WITH ServiciosPorSemana AS (\r\n" + //
+                    "    SELECT\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
+                    "        s.nombre AS servicio_mas_consumido,\r\n" + //
+                    "        COUNT(*) AS cantidad_consumos,\r\n" + //
+                    "        DENSE_RANK() OVER (PARTITION BY TO_CHAR(r.fechainicio, 'IYYY-IW') ORDER BY COUNT(*) DESC) AS ranking\r\n" + //
+                    "    FROM\r\n" + //
+                    "        reservaservicios r\r\n" + //
+                    "    JOIN\r\n" + //
+                    "        servicios s ON r.servicios_id = s.id\r\n" + //
+                    "    GROUP BY\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre\r\n" + //
+                    ")\r\n" + //
+                    "SELECT\r\n" + //
+                    "    semana_del_anio,\r\n" + //
+                    "    servicio_mas_consumido,\r\n" + //
+                    "    cantidad_consumos\r\n" + //
                     "FROM\r\n" + //
-                    "    reservaservicios r\r\n" + //
-                    "JOIN\r\n" + //
-                    "    servicios s ON r.servicios_id = s.id\r\n" + //
-                    "GROUP BY\r\n" + //
-                    "    TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre\r\n" + //
-                    "HAVING\r\n" + //
-                    "    COUNT(*) = (\r\n" + //
-                    "        SELECT MAX(count(*))\r\n" + //
-                    "        FROM reservaservicios r2\r\n" + //
-                    "        WHERE TO_CHAR(r.fechainicio, 'IYYY-IW') = TO_CHAR(r2.fechainicio, 'IYYY-IW')\r\n" + //
-                    "        GROUP BY r2.servicios_id\r\n" + //
-                    "    )\r\n" + //
-                    "    ", nativeQuery = true)
+                    "    ServiciosPorSemana\r\n" + //
+                    "WHERE\r\n" + //
+                    "    ranking = 1\r\n" + //
+                    " ", nativeQuery = true)
     List<Object[]> findServicioMasConsumidoPorSemana();
 
     //req 11 servicio menos consumido por semana:
-    @Query(value = "SELECT\r\n" + //
-                    "    TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
-                    "    s.nombre AS servicio_menos_consumido,\r\n" + //
-                    "    COUNT(*) AS cantidad_consumos\r\n" + //
+    @Query(value = " WITH ServiciosPorSemana AS (\r\n" + //
+                    "    SELECT\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
+                    "        s.nombre AS servicio_menos_consumido,\r\n" + //
+                    "        COUNT(*) AS cantidad_consumos,\r\n" + //
+                    "        DENSE_RANK() OVER (PARTITION BY TO_CHAR(r.fechainicio, 'IYYY-IW') ORDER BY COUNT(*)) AS ranking\r\n" + //
+                    "    FROM\r\n" + //
+                    "        reservaservicios r\r\n" + //
+                    "    JOIN\r\n" + //
+                    "        servicios s ON r.servicios_id = s.id\r\n" + //
+                    "    GROUP BY\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre\r\n" + //
+                    ")\r\n" + //
+                    "SELECT\r\n" + //
+                    "    semana_del_anio,\r\n" + //
+                    "    servicio_menos_consumido,\r\n" + //
+                    "    cantidad_consumos\r\n" + //
                     "FROM\r\n" + //
-                    "    reservaservicios r\r\n" + //
-                    "JOIN\r\n" + //
-                    "    servicios s ON r.servicios_id = s.id\r\n" + //
-                    "GROUP BY\r\n" + //
-                    "    TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre\r\n" + //
-                    "HAVING COUNT(*) = (\r\n" + //
-                    "        SELECT MIN(count(*))\r\n" + //
-                    "        FROM reservaservicios r2\r\n" + //
-                    "        WHERE TO_CHAR(r.fechainicio, 'IYYY-IW') = TO_CHAR(r2.fechainicio, 'IYYY-IW')\r\n" + //
-                    "        GROUP BY r2.servicios_id\r\n" + //
-                    "    )", nativeQuery = true)
+                    "    ServiciosPorSemana\r\n" + //
+                    "WHERE\r\n" + //
+                    "    ranking = 1", nativeQuery = true)
     List<Object[]> findServicioMenosConsumidoPorSemana();
 
     //req 11 habitacion mas solicitada por semana:
