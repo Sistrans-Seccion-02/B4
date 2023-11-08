@@ -13,6 +13,8 @@ import uniandes.edu.co.proyecto.nuevasClases.fechas2;
 import uniandes.edu.co.proyecto.nuevasClases.usuarioid;
 import uniandes.edu.co.proyecto.repositorio.UsuarioRepository;
 import uniandes.edu.co.proyecto.repositorio.ConsultasAvanzadasRepository;
+import uniandes.edu.co.proyecto.repositorio.ReservaHabitacionRepository;
+import uniandes.edu.co.proyecto.repositorio.ReservaServRepository;
 
 
 @Controller
@@ -23,6 +25,12 @@ public class ConsultasAvanzadasController {
 
       @Autowired
       private ConsultasAvanzadasRepository consultasRepository;
+
+      @Autowired
+      private ReservaServRepository reservaServiciosRepository;
+
+      @Autowired
+      private ReservaHabitacionRepository reservaHabitacionesRepository;
 
      @GetMapping("/consultasavanzadas")
      public String consultasAvanzadas(Model model){
@@ -126,4 +134,15 @@ public class ConsultasAvanzadasController {
       model.addAttribute("reservaservicios", consultasRepository.r10mod2(fecha1, fecha2));
       return "consultasAvanzadasR10mod2";
      }
+
+     @GetMapping("/consultasavanzadas/R11")
+     public String reservaHabitacionOcupacion(Model model) {
+         model.addAttribute("servicioMasConsumido", consultasRepository.findServicioMasConsumidoPorSemana());
+         model.addAttribute("servicioMenosConsumido", consultasRepository.findServicioMenosConsumidoPorSemana());
+         model.addAttribute("habitacionMasSolicitada", consultasRepository.findHabitacionMasSolicitadaPorSemana());
+         model.addAttribute("habitacionMenosSolicitada", consultasRepository.findHabitacionMenosSolicitadaPorSemana());
+         return "ConsultasAvanzadasR11";
+     }
+
+
 }
