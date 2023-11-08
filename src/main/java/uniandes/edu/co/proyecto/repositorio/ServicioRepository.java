@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.repositorio;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -49,4 +50,26 @@ public interface ServicioRepository extends JpaRepository<Servicio, Integer> {
     "GROUP BY s.id, s.nombre " +
     "HAVING COUNT(rs.id) < 3", nativeQuery = true)
      List<Object[]> obtenerServiciosMenosSolicitados();
+
+     //Servicios que cumplen con cierta característica
+     //Filtro por fecha
+     @Query(value = "SELECT s.id, s.nombre, s.costo, s.descripcion " +
+     "FROM servicios s " +
+     "JOIN reservaservicios rs ON s.id = rs.servicios_id " +
+     "WHERE fechafin <= :fecha2 AND fechafin >= :fecha1", nativeQuery = true)
+     List<Object[]> obtenerServiciosporFecha(@Param("fecha2") Date fecha2,  @Param("fecha1") Date fecha1);
+
+     //Filtro por precio
+     @Query(value = "SELECT s.id, s.nombre, s.costo, s.descripcion " +
+     "FROM servicios s " +
+     "JOIN reservaservicios rs ON s.id = rs.servicios_id " +
+     "WHERE lower(nombre) = lower(:nombre1)", nativeQuery = true)
+     List<Object[]> obtenerServiciosporCategoria(@Param("nombre1") String nombre1);
+
+     //Filtro por categoría
+     @Query(value = "SELECT s.id, s.nombre, s.costo, s.descripcion " +
+     "FROM servicios s " +
+     "JOIN reservaservicios rs ON s.id = rs.servicios_id " +
+     "WHERE costo <= :costo2 AND costo >= :costo1", nativeQuery = true)
+     List<Object[]> obtenerServiciosporPrecio(@Param("costo2") Number costo2,  @Param("costo1") Number costo1);
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import uniandes.edu.co.proyecto.modelo.Servicio;
+import uniandes.edu.co.proyecto.nuevasClases.fechas3;
 import uniandes.edu.co.proyecto.repositorio.ServicioRepository;
 
 @Controller
@@ -62,5 +63,22 @@ public class ServicioController {
     public String serviciosMenosSolicitados(Model model) {
         model.addAttribute("servicios", servicioRepository.obtenerServiciosMenosSolicitados());
         return "serviciosMenosSolicitados";
+    }
+
+    @GetMapping("/servicios/filtros")
+    public String serviciosfiltros(Model model){
+        model.addAttribute("fechas", new fechas3());
+        model.addAttribute("costo", new fechas3());
+        model.addAttribute("nombre", new fechas3());
+        return "FiltrarServiciosFiltros";
+    }
+
+    //filtrar servicios
+    @GetMapping("servicios/FiltrarServicios")
+    public String serviciosFiltrados(Model model) {
+        model.addAttribute("servicios", servicioRepository.obtenerServiciosporCategoria(fechas3.getnombre()));
+        model.addAttribute("servicios", servicioRepository.obtenerServiciosporFecha(fechas3.getFecha2(), fechas3.getFecha1()));
+        model.addAttribute("servicios", servicioRepository.obtenerServiciosporPrecio(fechas3.getcosto2(), fechas3.getcosto1()));
+        return "FiltrarServicios";
     }
 }
