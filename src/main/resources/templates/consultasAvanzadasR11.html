@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    <script th:src="@{/css/jquery.min.js}"></script>
+    <script th:src="@{/css/bootstrap.min.js}"></script>
+</head>
+
+<body>
+    <div class="text-center">
+        <h1>Consumos</h1>
+
+        <br>
+        <br>
+        
+
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th># de semana</th>
+                    <th>Servicio más consumido</th>
+                    <th>Cantidad de veces</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="reserva : ${servicioMasConsumido}">
+                    <tr>
+                        <td th:text="${reserva[0]}"></td>
+                        <td th:text="${reserva[1]}"></td>
+                        <td th:text="${reserva[2]}"></td>
+ 
+                        
+                    </tr>
+
+                </th:block>
+            </tbody>
+        </table>
+       
+        <br />
+        <br>
+        <br>
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th># de semana</th>
+                    <th>Servicio menos consumido</th>
+                    <th>Cantidad de veces</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="reserva : ${servicioMenosConsumido}">
+                    <tr>
+                        <td th:text="${reserva[0]}"></td>
+                        <td th:text="${reserva[1]}"></td>
+                        <td th:text="${reserva[2]}"></td>
+ 
+                        
+                    </tr>
+
+                </th:block>
+            </tbody>
+        </table>
+       <br>
+       <br>
+       <br>
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th># de semana</th>
+                    <th>Habitación más solicitada</th>
+                    <th>Cantidad de veces</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="reserva : ${habitacionMasSolicitada}">
+                    <tr>
+                        <td th:text="${reserva[0]}"></td>
+                        <td th:text="${reserva[1]}"></td>
+                        <td th:text="${reserva[2]}"></td>
+ 
+                        
+                    </tr>
+
+                </th:block>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+
+      <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th># de semana</th>
+                    <th>Habitación menos solicitada</th>
+                    <th>Cantidad de veces</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="reserva : ${habitacionMenosSolicitada}">
+                    <tr>
+                        <td th:text="${reserva[0]}"></td>
+                        <td th:text="${reserva[1]}"></td>
+                        <td th:text="${reserva[2]}"></td>
+ 
+                        
+                    </tr>
+
+                </th:block>
+            </tbody>
+        </table> 
+        
+</body>
+
+</html>
