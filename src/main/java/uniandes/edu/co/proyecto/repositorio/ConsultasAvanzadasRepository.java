@@ -102,44 +102,91 @@ public interface ConsultasAvanzadasRepository extends JpaRepository<ReservaServ,
 
 
     //req 11 Servicio más consumido por semana:
-    @Query("SELECT TO_CHAR(r.fechainicio, 'IYYY-IW') AS semanaDelAnio, s.nombre AS servicioMasConsumido, COUNT(*) AS cantidadConsumos " +
-    "FROM ReservaServicios r " +
-    "JOIN r.servicio s " +
-    "GROUP BY TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre " +
-    "HAVING COUNT(*) = (" +
-        "SELECT MAX(count(*)) " +
-        "FROM ReservaServicios r2 " +
-        "WHERE TO_CHAR(r.fechainicio, 'IYYY-IW') = TO_CHAR(r2.fechainicio, 'IYYY-IW') " +
-        "GROUP BY r2.servicio.id);")
+    @Query(value = "SELECT\r\n" + //
+                    "    TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
+                    "    s.nombre AS servicio_mas_consumido,\r\n" + //
+                    "    COUNT(*) AS cantidad_consumos\r\n" + //
+                    "FROM\r\n" + //
+                    "    reservaservicios r\r\n" + //
+                    "JOIN\r\n" + //
+                    "    servicios s ON r.servicios_id = s.id\r\n" + //
+                    "GROUP BY\r\n" + //
+                    "    TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre\r\n" + //
+                    "HAVING\r\n" + //
+                    "    COUNT(*) = (\r\n" + //
+                    "        SELECT MAX(count(*))\r\n" + //
+                    "        FROM reservaservicios r2\r\n" + //
+                    "        WHERE TO_CHAR(r.fechainicio, 'IYYY-IW') = TO_CHAR(r2.fechainicio, 'IYYY-IW')\r\n" + //
+                    "        GROUP BY r2.servicios_id\r\n" + //
+                    "    )\r\n" + //
+                    "    ", nativeQuery = true)
     List<Object[]> findServicioMasConsumidoPorSemana();
 
     //req 11 servicio menos consumido por semana:
-    @Query("SELECT TO_CHAR(r.fechainicio, 'IYYY-IW') AS semanaDelAnio, s.nombre AS servicioMenosConsumido, COUNT(*) AS cantidadConsumos " +
-    "FROM ReservaServicios r " +
-    "JOIN r.servicio s " +
-    "GROUP BY TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre " +
-    "HAVING COUNT(*) = (" +
-        "SELECT MIN(count(*)) " +
-        "FROM ReservaServicios r2 " +
-        "WHERE TO_CHAR(r.fechainicio, 'IYYY-IW') = TO_CHAR(r2.fechainicio, 'IYYY-IW') " +
-        "GROUP BY r2.servicio.id" +
-     ")")
+    @Query(value = "SELECT\r\n" + //
+                    "    TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
+                    "    s.nombre AS servicio_menos_consumido,\r\n" + //
+                    "    COUNT(*) AS cantidad_consumos\r\n" + //
+                    "FROM\r\n" + //
+                    "    reservaservicios r\r\n" + //
+                    "JOIN\r\n" + //
+                    "    servicios s ON r.servicios_id = s.id\r\n" + //
+                    "GROUP BY\r\n" + //
+                    "    TO_CHAR(r.fechainicio, 'IYYY-IW'), s.nombre\r\n" + //
+                    "HAVING COUNT(*) = (\r\n" + //
+                    "        SELECT MIN(count(*))\r\n" + //
+                    "        FROM reservaservicios r2\r\n" + //
+                    "        WHERE TO_CHAR(r.fechainicio, 'IYYY-IW') = TO_CHAR(r2.fechainicio, 'IYYY-IW')\r\n" + //
+                    "        GROUP BY r2.servicios_id\r\n" + //
+                    "    )", nativeQuery = true)
     List<Object[]> findServicioMenosConsumidoPorSemana();
 
     //req 11 habitacion mas solicitada por semana:
-    @Query("SELECT TO_CHAR(r.fechainicio, 'IYYY-IW') AS semanaDelAnio, oh.tipohabitacion AS habitacionMasSolicitada, COUNT(*) AS cantidadSolicitudes " +
-    "FROM ReservaHabitaciones r " +
-    "JOIN r.ofertashabitaciones oh " +
-    "GROUP BY TO_CHAR(r.fechainicio, 'IYYY-IW'), oh.tipohabitacion " +
-    "HAVING RANK() OVER (PARTITION BY TO_CHAR(r.fechainicio, 'IYYY-IW') ORDER BY COUNT(*) DESC) = 1")
+    @Query(value = "WITH HabitacionesSolicitadas AS (\r\n" + //
+                    "    SELECT\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
+                    "        oh.tipohabitacion AS habitacion,\r\n" + //
+                    "        COUNT(*) AS cantidad_solicitudes,\r\n" + //
+                    "        RANK() OVER (PARTITION BY TO_CHAR(r.fechainicio, 'IYYY-IW') ORDER BY COUNT(*) DESC) AS ranking\r\n" + //
+                    "    FROM\r\n" + //
+                    "        reservahabitaciones r\r\n" + //
+                    "    JOIN\r\n" + //
+                    "        ofertashabitaciones oh ON r.ofertashabitaciones_id = oh.id\r\n" + //
+                    "    GROUP BY\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW'), oh.tipohabitacion\r\n" + //
+                    ")\r\n" + //
+                    "SELECT\r\n" + //
+                    "    semana_del_anio,\r\n" + //
+                    "    habitacion AS habitacion_mas_solicitada,\r\n" + //
+                    "    cantidad_solicitudes\r\n" + //
+                    "FROM\r\n" + //
+                    "    HabitacionesSolicitadas\r\n" + //
+                    "WHERE\r\n" + //
+                    "    ranking = 1", nativeQuery = true)
     List<Object[]> findHabitacionMasSolicitadaPorSemana();
 
     //req 11 habitacion menos solicitada por semana:
-    @Query("SELECT TO_CHAR(r.fechainicio, 'IYYY-IW') AS semanaDelAnio, oh.tipohabitacion AS habitacionMenosSolicitada, COUNT(*) AS cantidadSolicitudes " +
-    "FROM ReservaHabitaciones r " +
-    "JOIN r.ofertashabitaciones oh " +
-    "GROUP BY TO_CHAR(r.fechainicio, 'IYYY-IW'), oh.tipohabitacion " +
-    "HAVING RANK() OVER (PARTITION BY TO_CHAR(r.fechainicio, 'IYYY-IW') ORDER BY COUNT(*)) = 1")
+    @Query(value = "WITH HabitacionesSolicitadas AS (\r\n" + //
+                    "    SELECT\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW') AS semana_del_anio,\r\n" + //
+                    "        oh.tipohabitacion AS habitacion,\r\n" + //
+                    "        COUNT(*) AS cantidad_solicitudes,\r\n" + //
+                    "        RANK() OVER (PARTITION BY TO_CHAR(r.fechainicio, 'IYYY-IW') ORDER BY COUNT(*)) AS ranking\r\n" + //
+                    "    FROM\r\n" + //
+                    "        reservahabitaciones r\r\n" + //
+                    "    JOIN\r\n" + //
+                    "        ofertashabitaciones oh ON r.ofertashabitaciones_id = oh.id\r\n" + //
+                    "    GROUP BY\r\n" + //
+                    "        TO_CHAR(r.fechainicio, 'IYYY-IW'), oh.tipohabitacion\r\n" + //
+                    ")\r\n" + //
+                    "SELECT\r\n" + //
+                    "    semana_del_anio,\r\n" + //
+                    "    habitacion AS habitacion_menos_solicitada,\r\n" + //
+                    "    cantidad_solicitudes\r\n" + //
+                    "FROM\r\n" + //
+                    "    HabitacionesSolicitadas\r\n" + //
+                    "WHERE\r\n" + //
+                    "    ranking = 1", nativeQuery = true)
     List<Object[]> findHabitacionMenosSolicitadaPorSemana();
 
 }
