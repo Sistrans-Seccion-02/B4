@@ -13,8 +13,6 @@ import uniandes.edu.co.proyecto.nuevasClases.fechas2;
 import uniandes.edu.co.proyecto.nuevasClases.usuarioid;
 import uniandes.edu.co.proyecto.repositorio.UsuarioRepository;
 import uniandes.edu.co.proyecto.repositorio.ConsultasAvanzadasRepository;
-import uniandes.edu.co.proyecto.repositorio.ReservaHabitacionRepository;
-import uniandes.edu.co.proyecto.repositorio.ReservaServRepository;
 
 
 @Controller
@@ -26,11 +24,7 @@ public class ConsultasAvanzadasController {
       @Autowired
       private ConsultasAvanzadasRepository consultasRepository;
 
-      @Autowired
-      private ReservaServRepository reservaServiciosRepository;
 
-      @Autowired
-      private ReservaHabitacionRepository reservaHabitacionesRepository;
 
      @GetMapping("/consultasavanzadas")
      public String consultasAvanzadas(Model model){
