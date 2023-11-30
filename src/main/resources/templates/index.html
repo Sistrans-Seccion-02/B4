@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel de Los Andes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+    
+</head>
+<body>
+    <div class="container mx-auto w-25">
+    <h1>Hotel de Los Andes</h1>
+    <img th:src="@{/images/logo.png}" width="250">
+
+    <div>
+        <a th:href="@{/usuarios}" class="btn btn-primary">Usuarios</a>
+        <a th:href="@{/ofertasHabitacion}" class="btn btn-primary">Habitaciones</a>
+        <a th:href="@{/reservaservicios}"class="btn btn-primary">Reserva Servicios</a>
+        <a th:href="@{/consumos}"class="btn btn-primary">Registro Consumos</a>
+        <a th:href="@{/hoteles}" class="btn btn-primary">Hoteles</a>
+        <a th:href="@{/servicios}" class="btn btn-primary">Servicios</a>
+        <a th:href="@{/planesconsumo}" class="btn btn-primary">Planes de Consumo</a>
+        <a th:href="@{/checks}" class="btn btn-primary">llegadas y salidas</a>
+        <a th:href="@{/reservasHabitacion}" class="btn btn-primary">Reserva Habitaciones</a>
+        <a th:href="@{/reservaservicios/habitaciones}" class="btn btn-primary">Dinero Recolectado por Servicios Habitaciones</a>
+        <a th:href="@{/reservaservicios/populares}" class="btn btn-primary">Servicios Más populares</a>
+        <a th:href="@{/ofertasHabitacion/porcentaje}" class="btn btn-primary">Porcentaje de ocupación por habitación</a>
+        <a th:href="@{/servicios/filtros}" class="btn btn-primary">Filtrar Servicios</a>
+        <a th:href="@{/reservasHabitacion/ocupacion}" class="btn btn-primary">fechas con mayor ocupacion</a>
+        <a th:href="@{/usuarios/buenosClientes}" class="btn btn-primary">Buenos Clientes</a>
+        <a th:href="@{/servicios/menosSolicitados}" class="btn btn-primary">Servicios con no mucha demanda</a>
+        <a th:href="@{/consumos/fechasId}" class="btn btn-primary">Consultar consumo por usuario en rango de fechas</a>
+        <a th:href="@{/consultasavanzadas}" class="btn btn-primary">Consultas Avanzadas</a>
+    </div>
+    <br/>
+
+</div>
+</body>
+</html>
