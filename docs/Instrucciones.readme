@@ -1,7 +1,0 @@
-Para correr el proyecto, es necesario seguir las siguientes instrucciones:
-1) cambiar credenciales de la base de datos en el archivo aplication.properties, se debe cambiar el user y contraseña
-por el propio que es usado para abrir la base de datos en oracle
-2) cargar en oracle el archivo CreacionHoteles.sql para la creación de tablas
-3) poblar tablas con el archivo datos.sql
-4) correr el programa en ProyectoApplication.java
-5) en el navegador correr el siguiente enlace: http://localhost:8080/Hoteles/
