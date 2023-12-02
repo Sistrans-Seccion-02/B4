@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Tipo</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <!-- Incluye el navbar -->
+   
+
+<div class="container mt-3">
+    
+    <div class="container border border-2 w-25">
+        <h1>Nuevo Tipo</h1>
+        <!-- Formulario de creación -->
+    <form th:action="@{/tipohabitacion/new/save}" th:object="${tipoNuevo}" method="post">
+
+        <!-- Campos para la información de la bebida -->
+        <label class="col-form-label" for="tipo">Tipo:</label>
+        <input class="form-control" type="text" id="tipo" name="tipo" th:field="*{tipo}" required />
+    
+        <label class="col-form-label" for="dotacion">Dotación:</label>
+        <input class="form-control" type="text" id="dotacion" name="dotacion" th:field="*{dotacion}" required />
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Crear Tipo</button>
+            <a th:href="@{/tipohabitacion}" class="btn btn-primary">Cancelar</a>
+        </div>
+    </form>
+    </div>
+    
+    
+
+</div>
+<script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>  
+</body>
+</html>

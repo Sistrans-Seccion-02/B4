@@ -11,17 +11,17 @@
     <div th:replace="navbar :: navbar"></div>
 
 <div class="container mt-3">
-    <h1>Nueva Bebida</h1>
+    <h1>Nueva Tipo</h1>
 
     <!-- Formulario de creación -->
-    <form th:action="@{/crearBebidaNueva}" th:object="${bebidaNueva}" method="post">
+    <form th:action="@{/tipohabitacion/new/save}" th:object="${bebidaNueva}" method="post">
 
         <!-- Campos para la información de la bebida -->
-        <label for="bebidaNombre">Nombre de la Bebida:</label>
-        <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required />
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" th:field="*{tipo}" required />
     
-        <label for="gradoAlcohol">Grado de Alcohol:</label>
-        <input type="text" id="gradoAlcohol" name="gradoAlcohol" th:field="*{gradoAlcohol}" required />
+        <label for="dotacion">Dotación:</label>
+        <input type="text" id="dotacion" name="dotacion" th:field="*{dotacion}" required />
     
         <button type="submit" class="btn btn-success">Crear Bebida</button>
     </form>
