@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rango de fechas reserva</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+
+<div class="container border border-2 w-25">
+    <h2>Ingrese el rango de fechas para consultar habitaciones disponibles:</h2>
+</br>
+    <form th:action="@{/reservaHabitaciones/new/fechas/habitaciones}" th:object="${fechas}" >
+        <label class="col-form-label">Fecha Inicio:</label>
+        <input class="form-control" type="date" id="fecha1" name="fecha1" required th:value="${fechas.fecha1}" />
+        <label class="col-form-label">Fecha Fin:</label>
+        <input class="form-control" type="date" id="fecha2" name="fecha2" required th:value="${fechas.fecha2}" />
+
+        <div class="text-center">
+            <input type="submit" value="Buscar" class="btn btn-primary">
+            <a th:href="@{/}" class="btn btn-primary">Cancelar</a>
+        </div>
+    </form>
+</div>
+</br>
+
+<script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script> 
+</body>
+
+</html>

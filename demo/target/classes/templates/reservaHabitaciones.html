@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas de Habitaciones</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="text-center">
+        <h1>Reservas de Habitaciones</h1>
+
+
+        <br />
+        
+        <br />
+
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Id Usuario</th>
+                    <th>Descipción</th>
+                    <th>Costo</th>
+                    <th>Id Habitación</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="reserva : ${reservasHabitaciones}">
+                    <tr>
+                        <td th:text="${reserva.id}"></td>
+                        <td th:text="${reserva.idUsuario}"></td>
+                        <td th:text="${reserva.descripcion}"></td>
+                        <td th:text="${reserva.costo}"></td>
+                        <td th:text="${reserva.idHabitacion}"></td>
+                        <td th:text="${reserva.FechaInicioReserva}"></td>
+                        <td th:text="${reserva.FechaFinReserva}"></td>
+                        <td>
+                            <a th:href="@{reservaHabitaciones/{id}/edit(id=${reserva.id})}">Editar</a>
+                            <a th:href="@{reservaHabitaciones/{id}/delete(id=${reserva.id})}"
+                                onclick="return confirm('¿Estás seguro de borrar esta Reserva?')">Borrar</a>
+                        </td> 
+                    </tr>
+
+                </th:block>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a th:href='@{reservaHabitaciones/new/fechas}' class="btn btn-primary">Añadir Reserva</a>
+            <a th:href="@{/}" class="btn btn-primary"> Volver Atrás</a>
+            </br>
+        </div>
+        <br />
+<script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>        
+</body>
+
+</html>

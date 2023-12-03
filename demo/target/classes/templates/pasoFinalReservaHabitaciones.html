@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Reserva</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <!-- Incluye el navbar -->
+   
+
+<div class="container mt-3">
+    
+    <div class="container border border-2 w-25">
+        <h1>Nueva Reserva de Habitación</h1>
+
+        
+        <!-- Formulario de creación -->
+    <form th:action="@{/reservaHabitaciones/new/save}" th:object="${nuevaReservaHabitacion}" method="post">
+
+        
+        <label class="col-form-label" for="descripcion">Descripción:</label>
+        <input class="form-control" type="text" id="descripcion" name="descripcion" th:field="${nuevaReservaHabitacion.descripcion}" required />
+    
+        <label class="col-form-label" for="costo">Costo:</label>
+        <input class="form-control" type="floatformat" id="costo" name="costo" th:field="${nuevaReservaHabitacion.costo}" required />
+        
+        <label class="col-form-label" for="idUsuario">Id Usuario:</label>
+        <input class="form-control" type="number" id="idUsuario" name="idUsuario" th:field="${nuevaReservaHabitacion.idUsuario}" required />
+        
+        
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary" >Reservar Habitación</button>
+            <a th:href="@{/habitaciones}" class="btn btn-primary">Cancelar</a>
+        </div>
+    </form>
+    </div>
+    
+    
+
+</div>
+<script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>  
+</body>
+</html>
