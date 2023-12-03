@@ -24,7 +24,7 @@ public class CheckController {
     @GetMapping("/checks/new")
     public String checkForm(Model model) {
         model.addAttribute("tipoNuevo", new Check());
-        return "checksNuevo";
+        return "checksForm";
     }
 
     @PostMapping("/checks/new/save")
@@ -39,7 +39,7 @@ public class CheckController {
         Check tipo =  checkRepository.findById(id).get();
         if(tipo != null){
             model.addAttribute("tipo", tipo);
-            return "checksEditar";
+            return "checkFormEditar";
         }
         return "redirect:/checks";
     }

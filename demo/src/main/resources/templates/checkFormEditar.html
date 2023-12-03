@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Check</title>
+    <title>Editar Check</title>
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
 </head>
 <body>
+
+    <!-- Incluye el navbar -->
+   
+
 <div class="container mt-3">
     
     <div class="container border border-2 w-25">
-        <h1>Nuevo Check</h1>
+        <h1>Editar Check</h1>
         <!-- Formulario de creación -->
-    <form th:action="@{/checks/new/save}" th:object="${tipoNuevo}" method="post">
+    <form th:action="@{/checks/{id}/edit/save(id=${tipo.id})}" th:object="${tipo}" method="post">
         <label class="col-form-label">id:</label>
         <input class="form-control" type="text" id="id" name="id" required th:value="${check.id}" />
         <label class="col-form-label">llegada:</label>
         <select class="form-control" id="llegada" name="llegada" required>
-            <option value="false" th:selected="${check.llegada eq 'false'}">Llegada</option>
-            <option value="true" th:selected="${check.llegada eq 'true'}">Salida</option>
+            <option value="false" th:selected="${check.llegada eq 'false'}">llega</option>
+            <option value="true" th:selected="${check.llegada eq 'true'}">sale</option>
         </select>
         <label class="col-form-label">fecha:</label>
         <input class="form-control" type="date" id="fecha" name="fecha" required th:value="${check.fecha}" />
@@ -32,8 +36,6 @@
         </div>
     </form>
     </div>
-    
-
 </div>
 <script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>  
 </body>
