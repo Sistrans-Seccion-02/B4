@@ -1,14 +1,9 @@
 package com.example.demo.repositorio;
 
-import java.util.List;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.example.demo.modelo.servicio;
+import com.example.demo.modelo.Servicio;
 
-public interface servicioRepository  extends MongoRepository<servicio, String>{
-
-    List<servicio> findByNombre(String nombre);
-
+public interface ServicioRepository extends MongoRepository <Servicio, String> {
     
 }

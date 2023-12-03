@@ -14,14 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.modelo.BebidaEmbedded;
 import com.example.demo.modelo.BebidaTipos;
-import com.example.demo.repositorio.servicioRepository;
+import com.example.demo.modelo.Servicio;
+import com.example.demo.repositorio.ServicioRepository;
 
 
 @Controller
 public class servicioController {
 
     @Autowired
-    private servicioRepository servicioRepository;
+    private ServicioRepository servicioRepository;
 
     @GetMapping("/servicio")
     public String obtenerTodasLasBebidasTipos(Model model){
@@ -36,7 +37,7 @@ public class servicioController {
 
     @GetMapping("/servicioForm")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("nuevoServicio", new servicio());
+        model.addAttribute("nuevoServicio", new Servicio());
         return "servicioForm";
     }
 

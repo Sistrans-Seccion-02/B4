@@ -1,34 +1,13 @@
 package com.example.demo.modelo;
 
-import java.lang.annotation.Inherited;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document (collection = "servicios")
-public class servicio {
-
-    //atributos
-    // IdServicio:Int
-    // Nombre: String
-    // Capacidad: Int
-    // Profundidad: Int
-    // Maquinas: Int
-    // Estilo: String
-    // Tipo: String
-    // Tipo_Prenda: String
-    // Num_Prenda: Int
-    // Utensilio: String
-    // Multa: Float
-    // Devuelto: Bool
-    // Inicio_Servicio: Date
-    // Fin_Servicio: Date
-    // Costo: Float
-    // Productos: ProductosEmbedded
-
+public class Servicio {
     @Id
     private String id;
 
@@ -76,12 +55,12 @@ public class servicio {
     private float costo;
 
     // Productos del servicio
-    private List<ProductosEmbedded> productos;
+    private List<productoEmbedded> productos;
 
     // Constructor vacio para el uso de Spring
-    public servicio(){}
+    public Servicio(){}
 
-    public servicio(String nombre, int capacidad, int profundidad, int maquinas, String estilo, String tipo, String tipo_prenda, int num_prenda, String utensilio, float multa, boolean devuelto, Date inicio_servicio, Date fin_servicio, float costo, List<ProductosEmbedded> productos) {
+    public Servicio(String nombre, int capacidad, int profundidad, int maquinas, String estilo, String tipo, String tipo_prenda, int num_prenda, String utensilio, float multa, boolean devuelto, Date inicio_servicio, Date fin_servicio, float costo, List<productoEmbedded> productos) {
         
         //Constructor con atributos. Note que si no se define una id, mongo genera una automaticamente 
         this.nombre = nombre;
@@ -214,15 +193,15 @@ public class servicio {
         this.costo = costo;
     }
 
-    public List<ProductosEmbedded> getProductos(){
+    public List<productoEmbedded> getProductos(){
         return productos;
     }
 
-    public void setProductos(List<ProductosEmbedded> productos){
+    public void setProductos(List<productoEmbedded> productos){
         this.productos = productos;
     }
 
-    public void addProducto(ProductosEmbedded producto){
+    public void addProducto(productoEmbedded producto){
         this.productos.add(producto);
     }
 

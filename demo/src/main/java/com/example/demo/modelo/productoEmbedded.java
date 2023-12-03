@@ -40,11 +40,4 @@ public class productoEmbedded {
     public void setCosto(int costo) {
         this.costo= costo;
     }
-
-    public String getId(){
-        return id;
-    }
-
-    
-    
 }

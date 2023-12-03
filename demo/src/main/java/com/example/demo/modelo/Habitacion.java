@@ -1,10 +1,5 @@
 package com.example.demo.modelo;
 
-
-
-
-
-
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
