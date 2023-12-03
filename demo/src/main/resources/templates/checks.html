@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Lista de llegadas y salidas</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
-    <script th:src="@{/css/jquery.min.js}"></script>
-    <script th:src="@{/css/bootstrap.min.js}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llegadas y Salidas</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
 </head>
 
 <body>
     <div class="text-center">
-        <h1>Lista Checks</h1>
-
+        <h1>Llegadas y Salidas</h1>
 
         <br />
-        <form th:action="@{check}" method="get">
-            <div class="input-group input-group-sm mb-2 justify-content-center">
-                <input class='w-25' id="txtSearch" type="text" name="id">
-            </div>
-        </form>
+        
         <br />
 
         <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
@@ -53,6 +48,7 @@
             </br>
         </div>
         <br />
+<script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>        
 </body>
 
 </html>
