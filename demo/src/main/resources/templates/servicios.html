@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="text-center">
+        <h1>Servicios</h1>
+        <br />
+        <br />
+
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Capacidad</th>
+                    <th>Profundidad</th>
+                    <th>Maquinas</th>
+                    <th>Estilo</th>
+                    <th>Tipo</th>
+                    <th>Tipo Prenda</th>
+                    <th>Número Prendas</th>
+                    <th>Utensilio</th>
+                    <th>Multa</th>
+                    <th>Devuelto</th>
+                    <th>Inicio Servicio</th>
+                    <th>Fin Servicio</th>
+                    <th>Costo</th>
+                    <!-- Agregar más columnas según sea necesario -->
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="servicio : ${servicios}">
+                    <tr>
+                        <td th:text="${servicio.id}"></td>
+                        <td th:text="${servicio.nombre}"></td>
+                        <td th:text="${servicio.capacidad}"></td>
+                        <td th:text="${servicio.profundidad}"></td>
+                        <td th:text="${servicio.maquinas}"></td>
+                        <td th:text="${servicio.estilo}"></td>
+                        <td th:text="${servicio.tipo}"></td>
+                        <td th:text="${servicio.tipo_prenda}"></td>
+                        <td th:text="${servicio.num_prenda}"></td>
+                        <td th:text="${servicio.utensilio}"></td>
+                        <td th:text="${servicio.multa}"></td>
+                        <td th:text="${servicio.devuelto ? 'Sí' : 'No'}"></td>
+                        <td th:text="${servicio.inicio_servicio}"></td>
+                        <td th:text="${servicio.fin_servicio}"></td>
+                        <td th:text="${servicio.costo}"></td>
+                        <td>
+                            <a th:href="@{/servicios/{id}/edit(id=${servicio.id})}">Editar</a>
+                            <a th:href="@{/servicios/{id}/delete(id=${servicio.id})}"
+                               onclick="return confirm('¿Estás seguro de borrar este servicio?')">Borrar</a>
+                        </td> 
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a th:href='@{/servicios/new}' class="btn btn-primary">Añadir Servicio</a>
+            <a th:href="@{/}" class="btn btn-primary"> Volver Atrás</a>
+            </br>
+        </div>
+        <br />
+    </div>
+    <script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>        
+</body>
+
+</html>

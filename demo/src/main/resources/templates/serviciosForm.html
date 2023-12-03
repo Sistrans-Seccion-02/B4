@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Servicio</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div class="container mt-3">
+
+    <div class="container border border-2 w-50">
+        <h1>Nuevo Servicio</h1>
+        <!-- Formulario de creación -->
+        <form th:action="@{/servicios/new/save}" th:object="${nuevoServicio}" method="post">
+            <!-- Campos para la información del servicio -->
+            <label class="col-form-label" for="nombre">Nombre:</label>
+            <input class="form-control" type="text" id="nombre" name="nombre" th:field="*{nombre}" required />
+
+            <label class="col-form-label" for="capacidad">Capacidad:</label>
+            <input class="form-control" type="number" id="capacidad" name="capacidad" th:field="*{capacidad}" />
+
+            <label class="col-form-label" for="profundidad">Profundidad:</label>
+            <input class="form-control" type="number" id="profundidad" name="profundidad" th:field="*{profundidad}" />
+
+            <label class="col-form-label" for="maquinas">Número de Máquinas:</label>
+            <input class="form-control" type="number" id="maquinas" name="maquinas" th:field="*{maquinas}" />
+
+            <label class="col-form-label" for="estilo">Estilo:</label>
+            <input class="form-control" type="text" id="estilo" name="estilo" th:field="*{estilo}" />
+
+            <label class="col-form-label" for="tipo">Tipo:</label>
+            <input class="form-control" type="text" id="tipo" name="tipo" th:field="*{tipo}" />
+
+            <label class="col-form-label" for="tipo_prenda">Tipo de Prenda:</label>
+            <input class="form-control" type="text" id="tipo_prenda" name="tipo_prenda" th:field="*{tipo_prenda}" />
+
+            <label class="col-form-label" for="num_prenda">Número de Prendas:</label>
+            <input class="form-control" type="number" id="num_prenda" name="num_prenda" th:field="*{num_prenda}" />
+
+            <label class="col-form-label" for="utensilio">Utensilio:</label>
+            <input class="form-control" type="text" id="utensilio" name="utensilio" th:field="*{utensilio}" />
+
+            <label class="col-form-label" for="multa">Multa:</label>
+            <input class="form-control" type="number" step="0.01" id="multa" name="multa" th:field="*{multa}" />
+
+            <label class="col-form-label" for="devuelto">Devuelto:</label>
+            <select class="form-control" id="devuelto" name="devuelto" th:field="*{devuelto}">
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+            </select>
+
+            <label class="col-form-label" for="inicio_servicio">Inicio del Servicio:</label>
+            <input class="form-control" type="date" id="inicio_servicio" name="inicio_servicio" th:field="*{inicio_servicio}" />
+
+            <label class="col-form-label" for="fin_servicio">Fin del Servicio:</label>
+            <input class="form-control" type="date" id="fin_servicio" name="fin_servicio" th:field="*{fin_servicio}" />
+
+            <label class="col-form-label" for="costo">Costo:</label>
+            <input class="form-control" type="number" step="0.01" id="costo" name="costo" th:field="*{costo}" />
+
+            <label class="col-form-label" for="productos">Productos:</label>
+            <textarea class="form-control" id="productos" name="productos" th:field="*{productos}"></textarea>
+    
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Crear Servicio</button>
+                <a th:href="@{/servicios}" class="btn btn-primary">Cancelar</a>
+            </div>
+        </form>
+    </div>
