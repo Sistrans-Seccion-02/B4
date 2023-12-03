@@ -7,42 +7,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "servicios")
-public class Servicio {
+public class servicio {
     @Id
     private String id;
 
     // Nombre del servicio
     private String nombre;
-
-    // Capacidad del servicio
-    private int capacidad;
-
-    // Profundidad del servicio
-    private int profundidad;
-
-    // Numero de maquinas del servicio
-    private int maquinas;
-
-    // Estilo del servicio
-    private String estilo;
-
-    // Tipo de servicio
-    private String tipo;
-
-    // Tipo de prenda
-    private String tipo_prenda;
-
-    // Numero de prendas
-    private int num_prenda;
-
-    // Utensilio del servicio
-    private String utensilio;
-
-    // Multa del servicio
-    private float multa;
-
-    // Devuelto del servicio
-    private boolean devuelto;
 
     // Inicio del servicio
     private Date inicio_servicio;
@@ -58,22 +28,12 @@ public class Servicio {
     private List<productoEmbedded> productos;
 
     // Constructor vacio para el uso de Spring
-    public Servicio(){}
+    public servicio(){}
 
-    public Servicio(String nombre, int capacidad, int profundidad, int maquinas, String estilo, String tipo, String tipo_prenda, int num_prenda, String utensilio, float multa, boolean devuelto, Date inicio_servicio, Date fin_servicio, float costo, List<productoEmbedded> productos) {
+    public servicio(String nombre, Date inicio_servicio, Date fin_servicio, float costo, List<productoEmbedded> productos) {
         
         //Constructor con atributos. Note que si no se define una id, mongo genera una automaticamente 
         this.nombre = nombre;
-        this.capacidad = capacidad;
-        this.profundidad = profundidad;
-        this.maquinas = maquinas;
-        this.estilo = estilo;
-        this.tipo = tipo;
-        this.tipo_prenda = tipo_prenda;
-        this.num_prenda = num_prenda;
-        this.utensilio = utensilio;
-        this.multa = multa;
-        this.devuelto = devuelto;
         this.inicio_servicio = inicio_servicio;
         this.fin_servicio = fin_servicio;
         this.costo = costo;
@@ -81,6 +41,8 @@ public class Servicio {
     }
 
     //<---------- Getters and Setters ---------->
+
+    
     public String getNombre(){
         return nombre;
     }
@@ -89,85 +51,6 @@ public class Servicio {
         this.nombre = name;
     }
 
-    public int getCapacidad(){
-        return capacidad;
-    }
-
-    public void setCapacidad(int capacidad){
-        this.capacidad = capacidad;
-    }
-
-    public int getProfundidad(){
-        return profundidad;
-    }
-
-    public void setProfundidad(int profundidad){
-        this.profundidad = profundidad;
-    }
-
-    public int getMaquinas(){
-        return maquinas;
-    }
-
-    public void setMaquinas(int maquinas){
-        this.maquinas = maquinas;
-    }
-
-    public String getEstilo(){
-        return estilo;
-    }
-
-    public void setEstilo(String estilo){
-        this.estilo = estilo;
-    }
-
-    public String getTipo(){
-        return tipo;
-    }
-
-    public void setTipo(String tipo){
-        this.tipo = tipo;
-    }
-
-    public String getTipo_Prenda(){
-        return tipo_prenda;
-    }
-
-    public void setTipo_Prenda(String tipo_prenda){
-        this.tipo_prenda = tipo_prenda;
-    }
-
-    public int getNum_Prenda(){
-        return num_prenda;
-    }
-
-    public void setNum_Prenda(int num_prenda){
-        this.num_prenda = num_prenda;
-    }
-
-    public String getUtensilio(){
-        return utensilio;
-    }
-
-    public void setUtensilio(String utensilio){
-        this.utensilio = utensilio;
-    }
-
-    public float getMulta(){
-        return multa;
-    }
-
-    public void setMulta(float multa){
-        this.multa = multa;
-    }
-
-    public boolean getDevuelto(){
-        return devuelto;
-    }
-
-    public void setDevuelto(boolean devuelto){
-        this.devuelto = devuelto;
-    }
 
     public Date getInicio_Servicio(){
         return inicio_servicio;

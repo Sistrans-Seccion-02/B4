@@ -3,5 +3,6 @@
     "java.project.sourcePaths": [
         ".",
         "demo"
-    ]
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }
