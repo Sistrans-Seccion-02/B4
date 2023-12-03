@@ -29,11 +29,6 @@ public class BebidaTiposController {
         return "bebidaTipos";
     }
 
-    @GetMapping("/")
-    public String home(Model model){
-        return "index";
-    }
-
     @GetMapping("/btForm")
     public String mostrarFormulario(Model model) {
         // Creamos una instancia vacía para el nuevo BebidaTipos

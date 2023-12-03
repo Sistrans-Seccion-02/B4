@@ -30,11 +30,6 @@ public class servicioController {
         return "servicio";
     }
 
-    @GetMapping("/")
-    public String home(Model model){
-        return "index";
-    }
-
     @GetMapping("/servicioForm")
     public String mostrarFormulario(Model model) {
         model.addAttribute("nuevoServicio", new Servicio());
