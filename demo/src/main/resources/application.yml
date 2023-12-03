@@ -1,8 +1,8 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://ISIS2304B01202320:WYCSTxdMGKyr@157.253.236.88:8087/ISIS2304B01202320
-      database: Sistrans
+      uri: mongodb+srv://juancaraballo:yabH3MR5aVjRESF0@cluster0.yeqdoqp.mongodb.net/
+      database: hoteles
 
   thymeleaf:
     prefix: classpath:/templates/
