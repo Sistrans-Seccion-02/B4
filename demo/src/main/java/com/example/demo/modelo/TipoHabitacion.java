@@ -4,7 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 
-@Document (collection = "tipos_habitacion")
+@Document(collection = "tipos_habitacion")
 public class TipoHabitacion{
 
     @Id

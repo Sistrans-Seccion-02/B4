@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Document (collection = "reserva_habitaciones")
+@Document(collection = "reserva_habitaciones")
 public class ReservaHabitacion {
     @Id
     private String id;
