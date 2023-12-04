@@ -1,0 +1,89 @@
+db.createCollection("checks",{
+		validator:{
+		$jsonSchema:{
+		bsonType: "object",
+		required: ["llegada", "fecha", "idReserva"],
+		properties:{
+		llegada: {bsonType: "bool"},
+		fecha: {bsonType: "date"},
+		idReserva: {bsonType: "string"}}}}});
+
+db.createCollection("hoteles",{
+		validator:{
+		$jsonSchema:{
+		bsonType: "object",
+		required: ["nombre", "ubicacion"],
+		properties:{
+		nombre: {bsonType: "string"},
+		ubicacion: {bsonType: "string"},
+		servicios_hotel: {bsonType: "array",
+							items:{
+							bsonType:"string"}}}}}});
+
+db.createCollection("consumos",{
+		validator:{
+		$jsonSchema:{
+		bsonType: "object",
+		required: ["idServicio", "idReserva", "fecha_inicio", "fecha_fin", "pago"],
+		properties:{
+		idServicio: {bsonType: "string"},
+		idReserva: {bsonType: "string"},
+		fecha_inicio: {bsonType: "date"},
+		fecha_fin: {bsonType: "date"},
+		pago: {bsonType: "double"}}}}});
+
+db.createCollection("tipos_habitacion",{
+		validator:{
+		$jsonSchema:{
+		bsonType: "object",
+		required: ["tipo", "dotacion"],
+		properties:{
+		tipo: {bsonType: "string"},
+		dotacion: {bsonType: "string"}}}}});
+
+db.createCollection("habitaciones",{
+		validator:{
+		$jsonSchema:{
+		bsonType: "object",
+		required: ["capacidad", "idTipoHabitacion", "fecha_inicio_oferta", "fecha_fin_oferta"],
+		properties:{
+		capacidad: {bsonType: "int"},
+		idTipoHabitacion: {bsonType: "string"},
+		fecha_inicio_oferta: {bsonType: "date"},
+		fecha_fin_oferta: {bsonType: "date"}}}}});
+
+db.createCollection("reserva_habitaciones",{
+		validator:{
+		$jsonSchema:{
+		bsonType: "object",
+		required: ["descripcion", "costo", "fecha_inicio_reserva", "fecha_fin_reserva", "idHabitacion"],
+		properties:{
+		descripcion: {bsonType: "string"},
+		costo: {bsonType: "double"},
+		fecha_inicio_reserva: {bsonType: "date"},
+		fecha_fin_reserva: {bsonType: "date"},
+		idHabitacion: {bsonType: "string"}}}}});
+
+db.createCollection("servicios",{
+		validator:{
+		$jsonSchema:{
+		bsonType: "object",
+		required: ["nombre", "capacidad", "profundidad", "maquinas", "estilo",
+							"tipo", "tipo_prenda", "num_prenda", "utensilio", "multa",
+							"devuelto", "inicio_servicio", "fin_servicio", "costo", "productos"],
+		properties:{
+		nombre: {bsonType: "string"},
+		capacidad: {bsonType: "int"},
+		profundidad: {bsonType: "int"},
+		maquinas: {bsonType: "int"},
+		estilo: {bsonType: "string"},
+		tipo: {bsonType: "string"},
+		tipo_prenda: {bsonType: "string"},
+		num_prenda: {bsonType: "int"},
+		utensilio: {bsonType: "string"},
+		multa: {bsonType: "double"},
+		devuelto: {bsonType: "bool"},
+		inicio_servicio: {bsonType: "date"},
+		fin_Servicio: {bsonType: "date"},
+		costo: {bsonType: "double"},
+		productos: {bsonType: "string"}}}}});
