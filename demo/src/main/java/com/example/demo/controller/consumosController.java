@@ -36,7 +36,7 @@ public class consumosController {
 
     @GetMapping("/consumos/{id}/edit")
     public String consumoEdit(Model model, @ModelAttribute("id") String id) {
-        consumo consumo = consumoRepository.findById(id);
+        consumo consumo = consumoRepository.findById(id).get();
         if (consumo != null) {
             model.addAttribute("consumos", consumo);
             return "consumosFormEditar";

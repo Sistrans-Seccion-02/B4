@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "checks")
 public class Check {
     @Id
-    private String id;
+    public String id;
     private Boolean llegada;
     private String idReserva;
     private String idUsuario;

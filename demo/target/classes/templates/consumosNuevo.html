@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Consumo</title>
+    <!-- Añade aquí cualquier otra hoja de estilos o scripts necesarios -->
+</head>
+<body>
+
+    <!-- Incluye el navbar -->
+    <div th:replace="navbar :: navbar"></div>
+
+    <div class="container mt-3">
+        <h1>Nuevo Consumo</h1>
+
+        <!-- Formulario de creación -->
+        <form th:action="@{/consumos/new/save}" th:object="${nuevoconsumo}" method="post">
+
+            <!-- Campos para la información del consumo -->
+            <div class="form-group">
+                <label for="idServicio">ID del Servicio:</label>
+                <input type="text" class="form-control" id="idServicio" name="idServicio" th:field="*{idServicio}" required />
+            </div>
+
+            <div class="form-group">
+                <label for="idReserva">ID de la Reserva:</label>
+                <input type="text" class="form-control" id="idReserva" name="idReserva" th:field="*{idReserva}" required />
+            </div>
+
+            <div class="form-group">
+                <label for="inicio">Fecha de Inicio:</label>
+                <input type="date" class="form-control" id="inicio" name="inicio" th:field="*{inicio}" />
+            </div>
+
+            <div class="form-group">
+                <label for="fin">Fecha de Fin:</label>
+                <input type="date" class="form-control" id="fin" name="fin" th:field="*{fin}" />
+            </div>
+
+            <div class="form-group">
+                <label for="pago">Pago:</label>
+                <input type="number" step="0.01" class="form-control" id="pago" name="pago" th:field="*{pago}" required />
+            </div>
+
+            <button type="submit" class="btn btn-success">Crear Consumo</button>
+        </form>
+    </div>
+
+</body>
+</html>

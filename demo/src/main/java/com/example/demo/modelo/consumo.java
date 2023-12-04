@@ -1,9 +1,10 @@
 package com.example.demo.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Document(collection = "consumos")
 public class consumo {
@@ -12,15 +13,17 @@ public class consumo {
     private String id;
 
     //id del servicio
-    private String idServicio;
+    public String idServicio;
 
     //id de la reserva
-    private String idReserva;
+    public String idReserva;
 
     //inicio
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date inicio;
 
     //fin
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fin;
 
     //pago
