@@ -1,0 +1,122 @@
+[
+    {
+        "_id": "355244de-140f-4426-8013-99a6493b8dd0",
+        "tipo": "Doble",
+        "dotacion": "Lavadora, Nevera, Jacuzzi",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "772c4fc7-e3ae-4796-a3e7-dd31261ee929",
+        "tipo": "Familiar",
+        "dotacion": "Mini Bar, Cafetera, Jacuzzi, Lavadora, Nevera",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "aca5fb7a-79fc-40f4-ae25-97c3ec68b989",
+        "tipo": "Familiar",
+        "dotacion": "Cafetera, Nevera, Lavadora, Estufa, Mini Bar, Jacuzzi",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "f13736d7-779e-4b70-afb8-34e25bb530d6",
+        "tipo": "Suite Presidencial",
+        "dotacion": "Cafetera, Estufa, Lavadora, Nevera",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "274ee5f5-c84d-40dd-ad2f-0b282be55b16",
+        "tipo": "Suite",
+        "dotacion": "Estufa, Nevera, Jacuzzi, Mini Bar, Lavadora, TV, Cafetera",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "2866230e-6676-4dcb-8ad5-b1995f6ecc3a",
+        "tipo": "Sencilla",
+        "dotacion": "Cafetera, Mini Bar, Nevera, Jacuzzi, Lavadora",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "63770605-2f23-4b95-ae61-787f9fd66d36",
+        "tipo": "Suite Presidencial",
+        "dotacion": "Lavadora, Estufa, Cafetera, Jacuzzi, Mini Bar, Nevera",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "a5169a51-b84b-4bfd-8f67-8f5488f37526",
+        "tipo": "Familiar",
+        "dotacion": "Nevera, TV",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "cb7cca21-f751-4cd1-8a91-732de55e97c3",
+        "tipo": "Familiar",
+        "dotacion": "Nevera, Mini Bar, TV, Estufa, Jacuzzi",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "c15c7173-ec91-4160-b775-00c5408b7840",
+        "tipo": "Suite Presidencial",
+        "dotacion": "TV, Cafetera, Lavadora, Mini Bar, Estufa, Nevera, Jacuzzi",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "51093877-89cb-4bba-8d3f-426b93eacea0",
+        "tipo": "Familiar",
+        "dotacion": "Cafetera, Estufa",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "0b41e934-d426-46d1-bdaa-963aedd286e2",
+        "tipo": "Doble",
+        "dotacion": "TV, Lavadora, Estufa, Mini Bar, Cafetera, Nevera, Jacuzzi",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "97f154e7-44d0-45d6-bca3-c4235ae25974",
+        "tipo": "Familiar",
+        "dotacion": "Estufa, TV",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "a1a1a071-b71a-40d3-aa05-37b753355e94",
+        "tipo": "Familiar",
+        "dotacion": "Lavadora, Cafetera, Jacuzzi",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "1c2ac38c-84d4-47e1-baef-de76ab0608c6",
+        "tipo": "Suite Presidencial",
+        "dotacion": "Nevera, Cafetera, Mini Bar",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "dd41f811-b2f9-48f7-bfb7-b5a47e59088e",
+        "tipo": "Sencilla",
+        "dotacion": "Jacuzzi, Estufa, Lavadora, Mini Bar, Cafetera, Nevera",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "d90a2bf5-adf3-4a56-a7ba-f65064f6c551",
+        "tipo": "Doble",
+        "dotacion": "Mini Bar",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "043b5fd8-9ba6-47f1-8eda-069e213ae472",
+        "tipo": "Suite Presidencial",
+        "dotacion": "Jacuzzi, Cafetera, Lavadora, TV",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "67dc52f2-785e-4ed0-a9d0-1d16e7b070fa",
+        "tipo": "Suite",
+        "dotacion": "Cafetera, TV, Lavadora, Mini Bar, Estufa",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    },
+    {
+        "_id": "6c6a2aad-d0bf-4f7c-982e-60574656875b",
+        "tipo": "Doble",
+        "dotacion": "Cafetera, Nevera, Jacuzzi, Lavadora, Estufa, TV, Mini Bar",
+        "_class": "com.example.demo.modelo.TipoHabitacion"
+    }
+]

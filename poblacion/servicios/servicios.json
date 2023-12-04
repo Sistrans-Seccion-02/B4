@@ -1,0 +1,284 @@
+[
+    {
+        "id": "4c949e13-deda-499c-8822-6d10ae2e27dc",
+        "nombre": "Restaurante",
+        "inicioServicio": "2023-02-26T00:00:00.000+00:00",
+        "finServicio": "2023-01-16T00:00:00.000+00:00",
+        "costo": 48438,
+        "_class": "com.example.demo.modelo.servicio",
+        "productos": "bebidas, snacks"
+    },
+    {
+        "id": "a320a3c2-8628-4eb2-957c-9bdb80baf4ba",
+        "nombre": "Gimnasio",
+        "inicioServicio": "2023-07-06T00:00:00.000+00:00",
+        "finServicio": "2023-09-03T00:00:00.000+00:00",
+        "costo": 43675,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "3039f6b3-7f37-4134-8335-916b77c77c66",
+        "nombre": "Spa",
+        "inicioServicio": "2023-01-29T00:00:00.000+00:00",
+        "finServicio": "2023-04-07T00:00:00.000+00:00",
+        "costo": 41878,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "a8e11786-2948-4fe6-b160-f1b59b36e343",
+        "nombre": "WiFi",
+        "inicioServicio": "2023-10-28T00:00:00.000+00:00",
+        "finServicio": "2023-07-16T00:00:00.000+00:00",
+        "costo": 21771,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "3a6818d6-7357-4700-a406-9cdf49817f18",
+        "nombre": "Mini bar",
+        "inicioServicio": "2023-03-02T00:00:00.000+00:00",
+        "finServicio": "2023-01-07T00:00:00.000+00:00",
+        "costo": 20412,
+        "_class": "com.example.demo.modelo.servicio",
+        "productos": "pollo, papa"
+    },
+    {
+        "id": "dd2ee150-8ac0-4e93-b68c-0d49ca6ff575",
+        "nombre": "Piscina",
+        "inicioServicio": "2023-02-13T00:00:00.000+00:00",
+        "finServicio": "2023-05-17T00:00:00.000+00:00",
+        "costo": 21830,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "aa2eaab8-549b-4812-8122-834a6e8f2bec",
+        "nombre": "Parqueadero",
+        "inicioServicio": "2023-07-15T00:00:00.000+00:00",
+        "finServicio": "2023-10-04T00:00:00.000+00:00",
+        "costo": 26743,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "495a677e-bbb0-4df9-8cde-c578a858cf17",
+        "nombre": "Lavanderia",
+        "inicioServicio": "2023-05-29T00:00:00.000+00:00",
+        "finServicio": "2023-10-08T00:00:00.000+00:00",
+        "costo": 40625,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "e462f44b-31c0-4e18-b7c7-6b714e6a3426",
+        "nombre": "Bar",
+        "inicioServicio": "2023-09-29T00:00:00.000+00:00",
+        "finServicio": "2023-12-19T00:00:00.000+00:00",
+        "costo": 28697,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "e2474f01-4f0a-4ca9-907d-136bf34dd718",
+        "nombre": "Cafeteria",
+        "inicioServicio": "2023-05-28T00:00:00.000+00:00",
+        "finServicio": "2023-09-13T00:00:00.000+00:00",
+        "costo": 11699,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "3e54d8b5-98f0-4cbd-9df1-7b898ffb14e9",
+        "nombre": "Salon de belleza",
+        "inicioServicio": "2023-01-10T00:00:00.000+00:00",
+        "finServicio": "2023-01-29T00:00:00.000+00:00",
+        "costo": 45068,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "c2097740-3a44-43b3-83c4-1784ab163bc5",
+        "nombre": "Sauna",
+        "inicioServicio": "2023-06-29T00:00:00.000+00:00",
+        "finServicio": "2023-05-22T00:00:00.000+00:00",
+        "costo": 21862,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "2b13d982-6b4b-46ea-99e2-9709d09f3b1c",
+        "nombre": "Jacuzzi",
+        "inicioServicio": "2023-11-16T00:00:00.000+00:00",
+        "finServicio": "2023-05-26T00:00:00.000+00:00",
+        "costo": 29833,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "0cff741a-eff5-4b76-ba89-32fb84723367",
+        "nombre": "Cine",
+        "inicioServicio": "2023-06-30T00:00:00.000+00:00",
+        "finServicio": "2023-03-15T00:00:00.000+00:00",
+        "costo": 25119,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "858315dd-14b3-415b-9c47-b43828636dd5",
+        "nombre": "Biblioteca",
+        "inicioServicio": "2023-02-07T00:00:00.000+00:00",
+        "finServicio": "2023-05-31T00:00:00.000+00:00",
+        "costo": 11495,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "64afb8f5-46ab-4677-8181-dd619551db6f",
+        "nombre": "Jardin",
+        "inicioServicio": "2023-09-21T00:00:00.000+00:00",
+        "finServicio": "2023-09-27T00:00:00.000+00:00",
+        "costo": 11365,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "d85fcd3f-2f51-4015-ab45-4ade77b4ced6",
+        "nombre": "Terraza",
+        "inicioServicio": "2023-02-24T00:00:00.000+00:00",
+        "finServicio": "2023-02-01T00:00:00.000+00:00",
+        "costo": 37866,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "74d85b2b-91bd-4ac2-99d3-7c6653a908bd",
+        "nombre": "Sala de juegos",
+        "inicioServicio": "2023-11-04T00:00:00.000+00:00",
+        "finServicio": "2023-08-05T00:00:00.000+00:00",
+        "costo": 12158,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "1dfe215f-d5e7-49c6-9525-e2b9f02c663e",
+        "nombre": "Guarderia",
+        "inicioServicio": "2023-06-25T00:00:00.000+00:00",
+        "finServicio": "2023-08-17T00:00:00.000+00:00",
+        "costo": 36024,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "b67a669d-c5d1-43b3-82ab-76124c5c20a8",
+        "nombre": "Tienda de regalos",
+        "inicioServicio": "2023-11-06T00:00:00.000+00:00",
+        "finServicio": "2023-11-16T00:00:00.000+00:00",
+        "costo": 15647,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "a7665f6e-e668-4aa2-89cb-8c360f5ef181",
+        "nombre": "Sala de conferencias",
+        "inicioServicio": "2023-06-12T00:00:00.000+00:00",
+        "finServicio": "2023-05-13T00:00:00.000+00:00",
+        "costo": 29263,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "3c91bff8-4ec8-455d-832e-4459cf0054c9",
+        "nombre": "Centro de negocios",
+        "inicioServicio": "2023-04-14T00:00:00.000+00:00",
+        "finServicio": "2023-04-14T00:00:00.000+00:00",
+        "costo": 43964,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "3b391acc-e011-4362-a0fd-0ed82e8ca3c7",
+        "nombre": "Servicio de habitaciones",
+        "inicioServicio": "2023-09-18T00:00:00.000+00:00",
+        "finServicio": "2023-11-21T00:00:00.000+00:00",
+        "costo": 48221,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "d81eb922-d8a7-46f6-b39f-895db93d436b",
+        "nombre": "Transporte al aeropuerto",
+        "inicioServicio": "2023-06-04T00:00:00.000+00:00",
+        "finServicio": "2023-09-15T00:00:00.000+00:00",
+        "costo": 43877,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "97db7af4-0979-4c73-8413-627720db6b9e",
+        "nombre": "Alquiler de bicicletas",
+        "inicioServicio": "2023-02-12T00:00:00.000+00:00",
+        "finServicio": "2023-10-10T00:00:00.000+00:00",
+        "costo": 19190,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "0c41c08e-c686-4a15-b2ce-5ebd9398d0db",
+        "nombre": "Alquiler de coches",
+        "inicioServicio": "2023-12-13T00:00:00.000+00:00",
+        "finServicio": "2023-08-17T00:00:00.000+00:00",
+        "costo": 33847,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "358af1ca-1700-407a-98f9-f2280e094f87",
+        "nombre": "Cambio de divisas",
+        "inicioServicio": "2023-02-27T00:00:00.000+00:00",
+        "finServicio": "2023-04-08T00:00:00.000+00:00",
+        "costo": 47109,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "192b8ef6-f724-4236-9d61-3e7363e1f68f",
+        "nombre": "Asistencia turistica",
+        "inicioServicio": "2023-11-01T00:00:00.000+00:00",
+        "finServicio": "2023-03-22T00:00:00.000+00:00",
+        "costo": 49927,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "c5a97630-0c9f-49b8-bb3e-2922e29ee2db",
+        "nombre": "Seguridad 24 horas",
+        "inicioServicio": "2023-02-16T00:00:00.000+00:00",
+        "finServicio": "2023-05-31T00:00:00.000+00:00",
+        "costo": 25191,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "dae7b891-4183-498a-b2c1-636520628d2a",
+        "nombre": "Recepcion 24 horas",
+        "inicioServicio": "2023-03-30T00:00:00.000+00:00",
+        "finServicio": "2023-11-05T00:00:00.000+00:00",
+        "costo": 19270,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "144313b4-a7d4-4556-bc41-4615774812b8",
+        "nombre": "Servicio de despertador",
+        "inicioServicio": "2023-04-12T00:00:00.000+00:00",
+        "finServicio": "2023-05-28T00:00:00.000+00:00",
+        "costo": 11027,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "d73806af-56f5-4764-89e3-e6189406537e",
+        "nombre": "Servicio de lavado en seco",
+        "inicioServicio": "2023-01-04T00:00:00.000+00:00",
+        "finServicio": "2023-07-24T00:00:00.000+00:00",
+        "costo": 31390,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "65c6c653-3a15-4b21-b58e-c01b90825e5d",
+        "nombre": "Servicio de planchado",
+        "inicioServicio": "2023-04-18T00:00:00.000+00:00",
+        "finServicio": "2023-01-22T00:00:00.000+00:00",
+        "costo": 26074,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "f41158d3-1283-4402-832b-a0a2ad7b55bc",
+        "nombre": "Servicio de masajes",
+        "inicioServicio": "2023-12-10T00:00:00.000+00:00",
+        "finServicio": "2023-01-26T00:00:00.000+00:00",
+        "costo": 49774,
+        "_class": "com.example.demo.modelo.servicio"
+    },
+    {
+        "id": "a52e0101-2adb-4ad5-b385-f3aff5c2fedf",
+        "nombre": "Cancha de tenis",
+        "inicioServicio": "2023-07-27T00:00:00.000+00:00",
+        "finServicio": "2023-08-30T00:00:00.000+00:00",
+        "costo": 16110,
+        "_class": "com.example.demo.modelo.servicio"
+    }
+]
