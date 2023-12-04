@@ -68,9 +68,7 @@ db.createCollection("servicios",{
 		validator:{
 		$jsonSchema:{
 		bsonType: "object",
-		required: ["nombre", "capacidad", "profundidad", "maquinas", "estilo",
-							"tipo", "tipo_prenda", "num_prenda", "utensilio", "multa",
-							"devuelto", "inicio_servicio", "fin_servicio", "costo", "productos"],
+		required: ["nombre"],
 		properties:{
 		nombre: {bsonType: "string"},
 		capacidad: {bsonType: "int"},
@@ -87,3 +85,4 @@ db.createCollection("servicios",{
 		fin_Servicio: {bsonType: "date"},
 		costo: {bsonType: "double"},
 		productos: {bsonType: "string"}}}}});
+
