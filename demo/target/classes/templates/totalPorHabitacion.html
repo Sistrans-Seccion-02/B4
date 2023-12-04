@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinero Recolectado por Habitación</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="text-center">
+        <h1>Dinero Recolectado por Habitación en 2023</h1>
+        <br />
+        <br />
+
+        <table class="table table-condensed table-hover table-bordered" style="border-collapse:collapse;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Habitación</th>
+                    <th>Total Recolectado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="recolectado : ${totales}">
+                    <tr>
+                        <td th:text="${recolectado.idHabitacion}"></td>
+                        <td th:text="${recolectado.totalRecolectado}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            </br>
+        </div>
+        <br />
+    </div>
+    <script src="/webjars/bootstrap/4.5.3/js/bootstrap.min.js"></script>        
+</body>
+
+</html>
+

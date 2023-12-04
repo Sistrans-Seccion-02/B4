@@ -184,12 +184,7 @@ public class ReservaHabitacionController {
 
     @GetMapping("/reservas/total")
     public String mostrarTotalPorHabitacion(Model model) {
-    List<TotalDiasPorHabitacion> totales = reservaHabitacionRepository.calcularTotalPorHabitacion();
     model.addAttribute("totales", reservaHabitacionRepository.calcularTotalPorHabitacion());
-    for (TotalDiasPorHabitacion total : totales) {
-        System.out.println(total.getIdHabitacion() + ": " + total.getTotal());
-    }
-    System.out.println("hola");
     return "reservas-total"; 
 }
 

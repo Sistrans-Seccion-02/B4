@@ -2,6 +2,8 @@ package com.example.demo.repositorio;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Aggregation;
+
+import java.util.Date;
 import java.util.List;
 import com.example.demo.modelo.ReservaHabitacion;
 
@@ -33,10 +35,45 @@ public interface ReservaHabitacionRepository extends MongoRepository<ReservaHabi
             this.total = total;
         }
     }
+    public class GastoTotal {
+        private String idUsuario;
+        private double totalGastado;
+    
+        public GastoTotal(String idUsuario, double totalGastado) {
+            this.idUsuario = idUsuario;
+            this.totalGastado = totalGastado;
+        }
+    
+        // Getters y Setters
+        public String getIdUsuario() {
+            return idUsuario;
+        }
+    
+        public void setIdUsuario(String idUsuario) {
+            this.idUsuario = idUsuario;
+        }
+    
+        public double getTotalGastado() {
+            return totalGastado;
+        }
+    
+        public void setTotalGastado(double totalGastado) {
+            this.totalGastado = totalGastado;
+        }
+    }
+
+    
 
     @Aggregation(pipeline = {
         "{$group: { _id: '$idHabitacion', totalDias: { $sum: '$dias' } } }",
         "{$project: { _id: 0, idHabitacion: '$_id', total: { $multiply: ['$totalDias', 0.274] } } }"
     })
     List<TotalDiasPorHabitacion> calcularTotalPorHabitacion();
+
+    @Aggregation(pipeline = {
+        "{ $match: { idUsuario: ?0, inicio: { $gte: ?1 }, fin: { $lte: ?2 } } }",
+        "{ $group: { _id: '$idUsuario', totalGastado: { $sum: '$pago' } } }",
+        "{ $project: { idUsuario: '$_id', totalGastado: 1, _id: 0 } }"
+    })
+    GastoTotal calcularGastoTotalPorUsuarioYRango(String idUsuario, Date fechaInicio, Date fechaFin);
 }

@@ -18,6 +18,9 @@ public class consumo {
     //id de la reserva
     public String idReserva;
 
+    //id de la habitacion
+    public String idHabitacion;
+
     //inicio
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date inicio;
@@ -33,11 +36,12 @@ public class consumo {
         //Constructor vacio para el uso de Spring
     }
 
-    public consumo(String idServicio,String idReserva, Date inicio, Date fin, float pago) {
+    public consumo(String idServicio,String idReserva,String idHabitacion, Date inicio, Date fin, float pago) {
         
         //Constructor con atributos. Note que si no se define una id, mongo genera una automaticamente 
         this.idServicio = idServicio;
         this.idReserva = idReserva;
+        this.idHabitacion = idHabitacion;
         this.inicio = inicio;
         this.fin = fin;
         this.pago = pago;
@@ -66,6 +70,14 @@ public class consumo {
 
     public void setidReserva(String idReserva){
         this.idReserva = idReserva;
+    }
+
+    public String getidHabitacion(){
+        return idHabitacion;
+    }
+
+    public void setidHabitacion(String idHabitacion){
+        this.idHabitacion = idHabitacion;
     }
 
     public Date getInicio(){

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.modelo.consumo;
 import com.example.demo.repositorio.consumoRepository;
+import com.example.demo.repositorio.consumoRepository.DineroRecolectadoPorHabitacion;
 
 @Controller
 public class consumosController {
@@ -55,5 +58,20 @@ public class consumosController {
     public String consumoDelete(@ModelAttribute("id") String id) {
         consumoRepository.deleteById(id);
         return "redirect:/consumos";
+    }
+
+    @GetMapping("/consumos/totalPorHabitacion")
+    public String mostrarTotalRecolectadoPorHabitacion(Model model) {
+        List<DineroRecolectadoPorHabitacion> resultado = consumoRepository.calcularDineroRecolectadoPorHabitacion();
+        for (DineroRecolectadoPorHabitacion r : resultado) {
+            System.out.println(r.getIdHabitacion() + " " + r.gettotalRecolectado());
+        }
+        if (resultado != null) {
+            model.addAttribute("totales", resultado);
+            return "totalPorHabitacion";
+        }
+        else {
+            return "redirect:/consumos";
+        }
     }
 }
