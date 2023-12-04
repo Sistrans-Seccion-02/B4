@@ -23,6 +23,7 @@ import com.example.demo.modelo.ReservaHabitacion;
 import com.example.demo.nuevasClases.fechas;
 import com.example.demo.repositorio.HabitacionRepository;
 import com.example.demo.repositorio.ReservaHabitacionRepository;
+import com.example.demo.repositorio.ReservaHabitacionRepository.TotalDiasPorHabitacion;
 
 @Controller
 public class ReservaHabitacionController {
@@ -180,5 +181,16 @@ public class ReservaHabitacionController {
 
         return "pasoFinalReservaHabitaciones";
      }
+
+    @GetMapping("/reservas/total")
+    public String mostrarTotalPorHabitacion(Model model) {
+    List<TotalDiasPorHabitacion> totales = reservaHabitacionRepository.calcularTotalPorHabitacion();
+    model.addAttribute("totales", reservaHabitacionRepository.calcularTotalPorHabitacion());
+    for (TotalDiasPorHabitacion total : totales) {
+        System.out.println(total.getIdHabitacion() + ": " + total.getTotal());
+    }
+    System.out.println("hola");
+    return "reservas-total"; 
+}
 
 }

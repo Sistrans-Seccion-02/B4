@@ -16,20 +16,20 @@
     <div class="container border border-2 w-25">
         <h1>Editar Check</h1>
         <!-- Formulario de creación -->
-    <form th:action="@{/checks/{id}/edit/save(id=${tipo.id})}" th:object="${tipo}" method="post">
+    <form th:action="@{/checks/{id}/edit/save(id=${check.id})}" th:object="${check}" method="post">
         <label class="col-form-label">id:</label>
         <input class="form-control" type="text" id="id" name="id" required th:value="${check.id}" />
         <label class="col-form-label">llegada:</label>
         <select class="form-control" id="llegada" name="llegada" required>
-            <option value="false" th:selected="${check.llegada eq 'false'}">llega</option>
-            <option value="true" th:selected="${check.llegada eq 'true'}">sale</option>
+            <option value="false" th:selected="${check.llegada eq 'false'}">sale</option>
+            <option value="true" th:selected="${check.llegada eq 'true'}">llega</option>
         </select>
         <label class="col-form-label">fecha:</label>
         <input class="form-control" type="date" id="fecha" name="fecha" required th:value="${check.fecha}" />
         <label class="col-form-label">Id de usuario:</label>
         <input class="form-control" type="text" id="idUsuario" name="idUsuario" required th:value="${check.idUsuario}" />
         <label class="col-form-label">Id de reserva:</label>
-        <input class="form-control" type="text" id="reservahabitaciones_id" name="reservahabitaciones_id" required th:value="${check.reservahabitaciones_id}" />
+        <input class="form-control" type="text" id="idReserva" name="idReserva" required th:value="${check.idReserva}" />
         <div class="text-center">
             <input type="submit" value="Guardar" class="btn btn-primary">
             <a th:href="@{/checks}" class="btn btn-primary">Cancelar</a>

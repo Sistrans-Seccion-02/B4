@@ -1,20 +1,26 @@
 package com.example.demo.modelo;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Document(collection = "checks")
 public class Check {
     @Id
     public String id;
-    private Boolean llegada;
+    public Boolean llegada;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    public Date fecha;
     private String idReserva;
     private String idUsuario;
 
     public Check(){}
 
-    public Check(Boolean llegada, String idReserva, String idUsuario){
+    public Check(Boolean llegada,Date fecha,String idReserva, String idUsuario){
         this.llegada = llegada;
+        this.fecha = fecha;
         this.idReserva = idReserva;
         this.idUsuario = idUsuario;
     }
@@ -33,6 +39,14 @@ public class Check {
 
     public void setllegada(Boolean llegada) {
         this.llegada = llegada;
+    }
+
+    public Date getfecha() {
+        return this.fecha;
+    }
+
+    public void setfecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getIdReserva() {
