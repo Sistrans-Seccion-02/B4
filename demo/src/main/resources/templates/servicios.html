@@ -22,6 +22,7 @@
                     <th>Inicio Servicio</th>
                     <th>Fin Servicio</th>
                     <th>Costo</th>
+                    <th>Productos</th>
                     <!-- Agregar más columnas según sea necesario -->
                 </tr>
             </thead>
@@ -30,9 +31,10 @@
                     <tr>
                         <td th:text="${servicio.id}"></td>
                         <td th:text="${servicio.nombre}"></td>
-                        <td th:text="${servicio.inicio_servicio}"></td>
-                        <td th:text="${servicio.fin_servicio}"></td>
+                        <td th:text="${servicio.inicioServicio}"></td>
+                        <td th:text="${servicio.finServicio}"></td>
                         <td th:text="${servicio.costo}"></td>
+                        <td th:text="${#strings.toString(servicio.productos)}"></td>
                         <td>
                             <a th:href="@{/servicios/{id}/edit(id=${servicio.id})}">Editar</a>
                             <a th:href="@{/servicios/{id}/delete(id=${servicio.id})}"

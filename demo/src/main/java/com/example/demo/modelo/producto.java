@@ -1,6 +1,5 @@
 package com.example.demo.modelo;
 
-import java.lang.annotation.Inherited;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

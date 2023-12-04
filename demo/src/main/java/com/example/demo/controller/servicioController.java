@@ -33,8 +33,8 @@ public class servicioController {
 
     @PostMapping("/servicios/new/save")
     public String serviciosSave(@ModelAttribute("nuevoservicio") servicio nuevoservicio){
-        servicio nuevo = new servicio(nuevoservicio.getNombre(),nuevoservicio.getInicio_Servicio(),
-        nuevoservicio.getFin_Servicio(),nuevoservicio.getCosto(),nuevoservicio.getProductos());
+        servicio nuevo = new servicio(nuevoservicio.getNombre(),nuevoservicio.getFinServicio(),
+        nuevoservicio.getFinServicio(),nuevoservicio.getCosto(),nuevoservicio.getProductos());
         servicioRepository.save(nuevo);
         return "redirect:/servicios";
     }
@@ -50,9 +50,10 @@ public class servicioController {
     }
 
      @PostMapping("/servicios/{id}/edit/save")
-    public String serviciosEditSave(@ModelAttribute("servicio") servicio nuevoservicio, @ModelAttribute("id") String id){
-        servicio nuevo = new servicio(nuevoservicio.getNombre(),nuevoservicio.getInicio_Servicio(),
-        nuevoservicio.getFin_Servicio(),nuevoservicio.getCosto(),nuevoservicio.getProductos());
+    public String serviciosEditSave(@ModelAttribute("servicios") servicio nuevoservicio, @ModelAttribute("id") String id){
+        servicio nuevo = new servicio(nuevoservicio.getNombre(),nuevoservicio.getFinServicio(),
+        nuevoservicio.getFinServicio(),nuevoservicio.getCosto(),nuevoservicio.getProductos());
+        nuevo.setId(id);
         servicioRepository.save(nuevo);
         return "redirect:/servicios";
     }

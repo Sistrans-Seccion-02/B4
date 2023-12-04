@@ -13,19 +13,19 @@
     <div class="container border border-2 w-50">
         <h1>Nuevo Servicio</h1>
         <!-- Formulario de creación -->
-        <form th:action="@{/servicios/new/save}" th:object="${nuevoServicio}" method="post">
+        <form th:action="@{/servicios/new/save}" th:object="${nuevoservicio}" method="post">
             <!-- Campos para la información del servicio -->
             <label class="col-form-label" for="nombre">Nombre:</label>
             <input class="form-control" type="text" id="nombre" name="nombre" th:field="*{nombre}" required />
 
-            <label class="col-form-label" for="inicio_servicio">Inicio del Servicio:</label>
-            <input class="form-control" type="date" id="inicio_servicio" name="inicio_servicio" th:field="*{inicio_servicio}" />
+            <label class="col-form-label" for="inicioServicio">Inicio del Servicio:</label>
+            <input class="form-control" type="date" id="inicioServicio" name="inicioServicio" th:field="${nuevoservicio.inicioServicio}" />
 
-            <label class="col-form-label" for="fin_servicio">Fin del Servicio:</label>
-            <input class="form-control" type="date" id="fin_servicio" name="fin_servicio" th:field="*{fin_servicio}" />
+            <label class="col-form-label" for="finServicio">Fin del Servicio:</label>
+            <input class="form-control" type="date" id="finServicio" name="finServicio" th:field="*{finServicio}" />
 
             <label class="col-form-label" for="costo">Costo:</label>
-            <input class="form-control" type="number" step="0.01" id="costo" name="costo" th:field="*{costo}" />
+            <input class="form-control" type="number" step="100" id="costo" name="costo" th:field="*{costo}" />
 
             <label class="col-form-label" for="productos">Productos:</label>
             <textarea class="form-control" id="productos" name="productos" th:field="*{productos}"></textarea>

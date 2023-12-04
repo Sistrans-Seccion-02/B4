@@ -4,6 +4,12 @@ import java.util.List;
 import com.example.demo.modelo.consumo;
 
 public interface consumoRepository {
-    List<consumo> findByid_servicio(String id_servicio);
+    List<consumo> findAll();
+    consumo findById(String id);
+    consumo save(consumo consumo);
+    void deleteById(String id);
+    //buscar reservas por id de servicio
+    List<consumo> findByIdServicio(String idServicio);
+    
     
 }

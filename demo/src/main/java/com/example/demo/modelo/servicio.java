@@ -1,47 +1,56 @@
 package com.example.demo.modelo;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Document(collection = "servicios")
 public class servicio {
     @Id
-    private String id;
+    public String id;
 
     // Nombre del servicio
     private String nombre;
 
     // Inicio del servicio
-    private Date inicio_servicio;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date inicioServicio;
 
     // Fin del servicio
-    private Date fin_servicio;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date finServicio;
 
 
     // Costo del servicio
     private float costo;
 
     // Productos del servicio
-    private List<productoEmbedded> productos;
+    private String productos;
 
     // Constructor vacio para el uso de Spring
     public servicio(){}
 
-    public servicio(String nombre, Date inicio_servicio, Date fin_servicio, float costo, List<productoEmbedded> productos) {
+    public servicio(String nombre, Date inicioServicio, Date finServicio, float costo, String productos) {
         
         //Constructor con atributos. Note que si no se define una id, mongo genera una automaticamente 
         this.nombre = nombre;
-        this.inicio_servicio = inicio_servicio;
-        this.fin_servicio = fin_servicio;
+        this.inicioServicio = inicioServicio;
+        this.finServicio = finServicio;
         this.costo = costo;
         this.productos = productos;
     }
 
     //<---------- Getters and Setters ---------->
 
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
     
     public String getNombre(){
         return nombre;
@@ -52,20 +61,20 @@ public class servicio {
     }
 
 
-    public Date getInicio_Servicio(){
-        return inicio_servicio;
+    public Date getInicioServicio(){
+        return inicioServicio;
     }
 
-    public void setInicio_Servicio(Date inicio_servicio){
-        this.inicio_servicio = inicio_servicio;
+    public void setInicioServicio(Date inicioServicio){
+        this.inicioServicio = inicioServicio;
     }
 
-    public Date getFin_Servicio(){
-        return fin_servicio;
+    public Date getFinServicio(){
+        return finServicio;
     }
 
-    public void setFin_Servicio(Date fin_servicio){
-        this.fin_servicio = fin_servicio;
+    public void setfinServicio(Date finServicio){
+        this.finServicio = finServicio;
     }
 
     public float getCosto(){
@@ -76,17 +85,14 @@ public class servicio {
         this.costo = costo;
     }
 
-    public List<productoEmbedded> getProductos(){
+    public String getProductos(){
         return productos;
     }
 
-    public void setProductos(List<productoEmbedded> productos){
+    public void setProductos(String productos){
         this.productos = productos;
     }
 
-    public void addProducto(productoEmbedded producto){
-        this.productos.add(producto);
-    }
 
     
 }

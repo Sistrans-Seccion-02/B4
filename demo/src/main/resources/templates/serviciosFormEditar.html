@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Servicio</title>
+    <title>Editar servicios</title>
     <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
 </head>
 <body>
@@ -11,25 +11,25 @@
 <div class="container mt-3">
 
     <div class="container border border-2 w-50">
-        <h1>Editar Servicio</h1>
+        <h1>Editar servicios</h1>
         <!-- Formulario de edición -->
-        <form th:action="@{/servicios/{id}/edit/save(id=${servicio.id})}" th:object="${servicio}" method="post">
-            <!-- Campos para la información del servicio -->
+        <form th:action="@{/servicios/{id}/edit/save(id=${servicios.id})}" th:object="${servicios}" method="post">
+            <!-- Campos para la información del servicios -->
             <label class="col-form-label" for="nombre">Nombre:</label>
-            <input class="form-control" type="text" id="nombre" name="nombre" th:value="${servicio.nombre}" required />
+            <input class="form-control" type="text" id="nombre" name="nombre" th:value="${servicios.nombre}" required />
 
-            <label class="col-form-label" for="inicio_servicio">Inicio del Servicio:</label>
-            <input class="form-control" type="date" id="inicio_servicio" name="inicio_servicio" th:value="${servicio.inicio_servicio}" />
+            <label class="col-form-label" for="inicioServicio">Inicio del servicios:</label>
+            <input class="form-control" type="date" id="inicioServicio" name="inicioServicio" th:value="*{inicioServicio}" />
 
-            <label class="col-form-label" for="fin_servicio">Fin del Servicio:</label>
-            <input class="form-control" type="date" id="fin_servicio" name="fin_servicio" th:value="${servicio.fin_servicio}" />
+            <label class="col-form-label" for="finServicio">Fin del servicios:</label>
+            <input class="form-control" type="date" id="finServicio" name="finServicio" th:value="*{finServicio}" />
 
             <label class="col-form-label" for="costo">Costo:</label>
             <input class="form-control" type="number" step="0.01" id="costo" name="costo"
-            th:value="${servicio.costo}" />
+            th:value="${servicios.costo}" />
 
             <label class="col-form-label" for="productos">Productos:</label>
-            <textarea class="form-control" id="productos" name="productos" th:text="${#strings.toString(servicio.productos)}"></textarea>
+            <textarea class="form-control" id="productos" name="productos" th:text="${#strings.toString(servicios.productos)}"></textarea>
 
             <div class="text-center mt-3">
                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
